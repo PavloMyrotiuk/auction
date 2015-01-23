@@ -1,0 +1,35 @@
+allprojects{
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    publishing {
+        repositories {
+            maven {
+                mavenLocal()
+            }
+        }
+    }
+}
+
+project(':auction-middleware:auction-middleware-war'){
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.web
+            }
+        }
+    }
+}
+
+project(':auction-engine:auction-engine-war'){
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.web
+            }
+        }
+    }
+}
+

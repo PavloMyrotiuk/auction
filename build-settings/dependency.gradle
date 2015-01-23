@@ -1,0 +1,18 @@
+project(':auction-middleware:auction-middleware-war'){
+    dependencies{
+        compile project(':auction-middleware:auction-middleware-persistence')
+        compile project(':auction-middleware:auction-middleware-persistence-api')
+        compile project(':auction-middleware:auction-middleware-service')
+        compile project(':auction-middleware:auction-middleware-service-api')
+        compile project(':auction-middleware:auction-middleware-webservice')
+    }
+}
+
+project(':auction-engine:auction-engine-war'){
+    dependencies{
+        compile project(':auction-engine:auction-engine-persistence')
+        compile project(':auction-engine:auction-engine-persistence-api')
+        compile project(':auction-engine:auction-engine-service')
+        compile project(':auction-engine:auction-engine-service-api')
+    }
+}

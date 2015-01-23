@@ -1,26 +1,10 @@
-subprojects {
-    apply plugin: 'idea'
-    apply plugin: 'java'
-    apply plugin: 'maven-publish'
+apply from: 'build-settings/ext.gradle'
+apply from: 'build-settings/plugin.gradle'
+apply from: 'build-settings/repository.gradle'
+apply from: 'build-settings/dependency.gradle'
 
+allprojects {
     version = '1.0'
     group = 'com.myrotiuk.auction'
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-    }
-
-    ext {
-        junitVersion = 4.12
-    }
-
-    publishing {
-        repositories {
-            maven {
-                mavenLocal()
-            }
-        }
-    }
 }
 
