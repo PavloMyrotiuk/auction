@@ -1,0 +1,26 @@
+subprojects {
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    version = '1.0'
+    group = 'com.myrotiuk.auction'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    ext {
+        junitVersion = 4.12
+    }
+
+    publishing {
+        repositories {
+            maven {
+                mavenLocal()
+            }
+        }
+    }
+}
+
