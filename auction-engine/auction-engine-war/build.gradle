@@ -1,9 +1,0 @@
-apply plugin: 'war'
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.war
-        }
-    }
-}
