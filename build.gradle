@@ -1,0 +1,10 @@
+apply from: 'build-settings/ext.gradle'
+apply from: 'build-settings/plugin.gradle'
+apply from: 'build-settings/repository.gradle'
+apply from: 'build-settings/dependency.gradle'
+
+allprojects {
+    version = '1.0'
+    group = 'com.myrotiuk.auction'
+}
+

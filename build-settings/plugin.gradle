@@ -1,0 +1,13 @@
+allprojects{
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+}
+
+project(':auction-middleware:auction-middleware-war'){
+    apply plugin: 'war'
+}
+
+project(':auction-engine:auction-engine-war'){
+    apply plugin: 'war'
+}
