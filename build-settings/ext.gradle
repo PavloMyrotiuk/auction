@@ -4,5 +4,6 @@ allprojects {
         springVersion = '4.1.4.RELEASE'
         servletapiVersion = '3.1.0'
         commonsloggingVersion = '1.2'
+        activemqcoreVersion = '5.7.0'
     }
 }

@@ -17,6 +17,9 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework:spring-expression:$springVersion@jar"
         compile "commons-logging:commons-logging:$commonsloggingVersion@jar"
 
+        compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
+
+
 
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }
