@@ -9,7 +9,6 @@
 hs_err_pid*
 
 build/
-pom-default.xml
 .idea
 *.iml
 .gradle
