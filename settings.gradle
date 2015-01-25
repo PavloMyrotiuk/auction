@@ -5,6 +5,7 @@ include 'auction-common:auction-core', 'auction-common:auction-jms'
 include 'auction-middleware:auction-middleware-persistence-api', 'auction-middleware:auction-middleware-persistence'
 include 'auction-middleware:auction-middleware-service-api', 'auction-middleware:auction-middleware-service'
 include 'auction-middleware:auction-middleware-webservice', 'auction-middleware:auction-middleware-war'
+include 'auction-middleware:auction-middleware-config'
 
 include 'auction-engine:auction-engine-persistence-api', 'auction-engine:auction-engine-persistence'
 include 'auction-engine:auction-engine-service-api', 'auction-engine:auction-engine-service'
