@@ -5,5 +5,8 @@ allprojects {
         servletapiVersion = '3.1.0'
         commonsloggingVersion = '1.2'
         activemqcoreVersion = '5.7.0'
+        log4jVersion = '2.1'
+        aspectjVersion='1.8.4'
+
     }
 }

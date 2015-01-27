@@ -1,15 +1,15 @@
 package com.myrotiuk.auction.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 /**
  * Created by pav on 1/25/15.
  */
 @Configuration
-@PropertySource(value = {"config.properties"})
+@EnableAspectJAutoProxy
+@PropertySource(value = {"/WEB-INF/jms.properties"})
+@ComponentScan(basePackages = {"com.myrotiuk.auction"})
 public class MiddlewareConfig {
 
     @Bean

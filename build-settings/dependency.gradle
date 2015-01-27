@@ -1,5 +1,9 @@
 project(':auction-middleware:auction-middleware-war'){
     dependencies{
+
+        compile project(':auction-common:auction-core')
+        compile project(':auction-common:auction-jms')
+        compile project(':auction-common:auction-logging')
         compile project(':auction-middleware:auction-middleware-persistence')
         compile project(':auction-middleware:auction-middleware-persistence-api')
         compile project(':auction-middleware:auction-middleware-service')
@@ -15,7 +19,14 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework:spring-web:$springVersion@jar"
         compile "org.springframework:spring-aop:$springVersion@jar"
         compile "org.springframework:spring-expression:$springVersion@jar"
+
+        compile "org.aspectj:aspectjrt:$aspectjVersion@jar"
+        compile "org.aspectj:aspectjweaver:$aspectjVersion@jar"
+
+
         compile "commons-logging:commons-logging:$commonsloggingVersion@jar"
+        compile "org.apache.logging.log4j:log4j-api:$log4jVersion@jar"
+        compile "org.apache.logging.log4j:log4j-core:$log4jVersion@jar"
 
         compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
 
