@@ -22,7 +22,7 @@ public class ExceptionHandlerAspect {
     @AfterThrowing(pointcut = "within(com.myrotiuk.auction..*)", throwing = "exception")
     public void logAfterThrowingExceptionAndSubException(JoinPoint joinPoint, Exception exception) {
 
-        logger.error("Method "+ joinPoint.getSignature().toLongString()+ " has thrown exception "+ exception);
+        logger.error("Method "+ joinPoint.getSignature().toString()+ " has thrown exception "+ exception);
         logger.error(getStackTrace(exception));
 
     }
