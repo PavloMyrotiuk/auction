@@ -13,7 +13,7 @@ public class TestController {
 
     @RequestMapping(value ="/", method = RequestMethod.GET)
     public String test(){
-//        if (true) throw new RuntimeException("hohoh");
+        if (true) throw new RuntimeException("hohoh");
         return "Hello";
     }
 }

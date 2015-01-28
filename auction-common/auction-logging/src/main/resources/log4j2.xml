@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Properties>
-        <Property name="file">/usr/local/tomcat/apache-tomcat-8.0.17/logs/auction-middleware.log</Property>
+        <Property name="file">/usr/local/tomcat/apache-tomcat-8.0.17/logs/auction.log</Property>
         <Property name="pattern">%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Property>
     </Properties>
     <Appenders>

@@ -18,6 +18,7 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework:spring-webmvc:$springVersion@jar"
         compile "org.springframework:spring-web:$springVersion@jar"
         compile "org.springframework:spring-aop:$springVersion@jar"
+        compile "org.springframework:spring-aspects:$springVersion@jar"
         compile "org.springframework:spring-expression:$springVersion@jar"
 
         compile "org.aspectj:aspectjrt:$aspectjVersion@jar"
