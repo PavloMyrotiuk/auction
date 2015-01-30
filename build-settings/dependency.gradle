@@ -8,7 +8,7 @@ project(':auction-middleware:auction-middleware-war'){
         compile project(':auction-middleware:auction-middleware-persistence-api')
         compile project(':auction-middleware:auction-middleware-service')
         compile project(':auction-middleware:auction-middleware-service-api')
-        compile project(':auction-middleware:auction-middleware-webservice')
+        compile project(':auction-middleware:auction-middleware-web')
         compile project(':auction-middleware:auction-middleware-config')
 
         testCompile "junit:junit:$junitVersion@jar"
@@ -20,6 +20,8 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework:spring-aop:$springVersion@jar"
         compile "org.springframework:spring-aspects:$springVersion@jar"
         compile "org.springframework:spring-expression:$springVersion@jar"
+
+        compile "org.springframework:spring-jms:$springVersion@jar"
 
         compile "org.aspectj:aspectjrt:$aspectjVersion@jar"
         compile "org.aspectj:aspectjweaver:$aspectjVersion@jar"
