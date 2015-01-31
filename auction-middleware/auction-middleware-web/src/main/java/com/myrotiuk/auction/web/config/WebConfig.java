@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.web.config;
 
-import com.myrotiuk.auction.web.converter.ProductToProductVOConverter;
+import com.myrotiuk.auction.web.converter.Product2ProductVOConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;
@@ -25,7 +25,7 @@ public class WebConfig {
 
     private Set<Converter> getConverters(){
         Set<Converter> result = new HashSet<>();
-        result.add(new ProductToProductVOConverter());
+        result.add(new Product2ProductVOConverter());
         return result;
     }
 }

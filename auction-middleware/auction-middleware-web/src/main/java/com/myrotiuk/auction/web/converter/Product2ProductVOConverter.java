@@ -7,7 +7,7 @@ import org.springframework.core.convert.converter.Converter;
 /**
  * Created by pav on 1/30/15.
  */
-public class ProductToProductVOConverter implements Converter<Product, ProductVO> {
+public class Product2ProductVOConverter implements Converter<Product, ProductVO> {
     @Override
     public ProductVO convert(Product source) {
         ProductVO result = new ProductVO();

@@ -8,17 +8,17 @@ import java.math.BigDecimal;
  * Created by pav on 1/29/15.
  */
 public class ProductVO {
-    private int id;
+    private long id;
     private BigDecimal price;
     private String title;
     private String description;
     private ProductStatus  productStatus;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

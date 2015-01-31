@@ -7,6 +7,7 @@ allprojects {
         activemqcoreVersion = '5.7.0'
         log4jVersion = '2.1'
         aspectjVersion='1.8.4'
+        jackson2Version='2.5.0'
 
     }
 }
