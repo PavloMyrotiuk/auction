@@ -20,6 +20,6 @@ public class ProductServiceImpl implements ProductService {
     public void sendCreatedProductMessage(Product product) {
         ProductCreatedMessage message = new ProductCreatedMessage();
         message.setProductId(product.getId());
-        jmsProductService.sendNewProductCreated(message);
+        jmsProductService.sendNewProductCreatedMessage(message);
     }
 }

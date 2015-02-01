@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.listener.DefaultMessageListenerContainer;
+import org.springframework.jms.listener.adapter.MessageListenerAdapter;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
@@ -16,6 +20,7 @@ import org.springframework.jms.support.converter.MessageType;
 /**
  * Created by pav on 1/25/15.
  */
+@EnableJms
 @Configuration
 @ComponentScan(basePackages = {"com.myrotiuk.auction.jms.annotation", "com.myrotiuk.auction.jms.service"})
 public class JmsConfig {
@@ -39,8 +44,7 @@ public class JmsConfig {
         JmsTemplate result = new JmsTemplate();
         result.setConnectionFactory(cachingConnectionFactory());
         result.setDefaultDestination(createdProductQueue());
-        MessageConverter messageConverter = getJacksonMessageConverter();
-        result.setMessageConverter(messageConverter);
+        result.setMessageConverter(getJacksonMessageConverter());
         return result;
     }
 
@@ -61,4 +65,14 @@ public class JmsConfig {
     public ActiveMQQueue createdProductQueue(){
         return new ActiveMQQueue(createdProductQueue);
     }
+
+    @Bean
+    public DefaultJmsListenerContainerFactory messageListenerContainerFactory(){
+        DefaultJmsListenerContainerFactory result = new DefaultJmsListenerContainerFactory();
+        result.setConnectionFactory(connectionFactory());
+        result.setMessageConverter(getJacksonMessageConverter());
+        return result;
+    }
+
+
 }

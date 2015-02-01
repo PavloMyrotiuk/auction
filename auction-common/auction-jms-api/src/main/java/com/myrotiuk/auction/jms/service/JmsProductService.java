@@ -7,5 +7,7 @@ import com.myrotiuk.auction.model.message.ProductCreatedMessage;
  */
 public interface JmsProductService {
 
-    void sendNewProductCreated(ProductCreatedMessage message);
+    void sendNewProductCreatedMessage(ProductCreatedMessage message);
+
+    void readNewProductCreatedMessage(ProductCreatedMessage message);
 }
