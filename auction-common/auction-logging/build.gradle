@@ -3,4 +3,6 @@ dependencies{
     provided "org.springframework:spring-web:$springVersion@jar"
     provided "org.aspectj:aspectjrt:$aspectjVersion@jar"
     provided "org.springframework:spring-context:$springVersion@jar"
+
+    provided project(':auction-common:auction-core')
 }
