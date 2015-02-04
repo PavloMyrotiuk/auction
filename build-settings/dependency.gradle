@@ -2,17 +2,16 @@ project(':auction-middleware:auction-middleware-war'){
     dependencies{
 
         compile project(':auction-common:auction-core')
-        compile project(':auction-common:auction-jms')
-        compile project(':auction-common:auction-jms-api')
         compile project(':auction-common:auction-logging')
         compile project(':auction-middleware:auction-middleware-persistence')
         compile project(':auction-middleware:auction-middleware-persistence-api')
         compile project(':auction-middleware:auction-middleware-service')
         compile project(':auction-middleware:auction-middleware-service-api')
         compile project(':auction-middleware:auction-middleware-web')
-        compile project(':auction-middleware:auction-middleware-config')
 
         testCompile "junit:junit:$junitVersion@jar"
+
+
         compile "org.springframework:spring-context:$springVersion@jar"
         compile "org.springframework:spring-beans:$springVersion@jar"
         compile "org.springframework:spring-core:$springVersion@jar"
@@ -35,10 +34,11 @@ project(':auction-middleware:auction-middleware-war'){
         compile "commons-logging:commons-logging:$commonsloggingVersion@jar"
         compile "org.apache.logging.log4j:log4j-api:$log4jVersion@jar"
         compile "org.apache.logging.log4j:log4j-core:$log4jVersion@jar"
+        compile "org.apache.logging.log4j:log4j-web:$log4jVersion@jar"
+        compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion@jar"
+        compile "org.slf4j:slf4j-api:$slf4jVersion@jar"
 
         compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
-
-
 
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }
@@ -47,8 +47,6 @@ project(':auction-middleware:auction-middleware-war'){
 project(':auction-engine:auction-engine-war'){
     dependencies{
         compile project(':auction-common:auction-core')
-        compile project(':auction-common:auction-jms')
-        compile project(':auction-common:auction-jms-api')
         compile project(':auction-common:auction-logging')
         compile project(':auction-engine:auction-engine-persistence')
         compile project(':auction-engine:auction-engine-persistence-api')
@@ -56,6 +54,7 @@ project(':auction-engine:auction-engine-war'){
         compile project(':auction-engine:auction-engine-service-api')
 
         testCompile "junit:junit:$junitVersion@jar"
+
         compile "org.springframework:spring-context:$springVersion@jar"
         compile "org.springframework:spring-beans:$springVersion@jar"
         compile "org.springframework:spring-core:$springVersion@jar"
@@ -76,6 +75,9 @@ project(':auction-engine:auction-engine-war'){
         compile "commons-logging:commons-logging:$commonsloggingVersion@jar"
         compile "org.apache.logging.log4j:log4j-api:$log4jVersion@jar"
         compile "org.apache.logging.log4j:log4j-core:$log4jVersion@jar"
+        compile "org.apache.logging.log4j:log4j-web:$log4jVersion@jar"
+        compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion@jar"
+        compile "org.slf4j:slf4j-api:$slf4jVersion@jar"
 
         compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
     }
