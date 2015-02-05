@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class JmsProductServiceImpl implements JmsProductService {
 
     @Override
-    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.CreatedProductQueue}")
+    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.CreatedProductQueue}" )
     public void readNewProductCreatedMessage(ProductCreatedMessage message) {
         System.out.println(message);
     }

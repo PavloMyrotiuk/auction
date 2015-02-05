@@ -18,7 +18,7 @@ public class ServiceAspect {
 
     Logger logger = LogManager.getLogger(ServiceAspect.class);
 
-    @Before("execution( * com.myrotiuk.auction.*.service.*.*(..))")
+    @Before("execution( * com.myrotiuk.auction.*.service..*.*(..))")
     public void logAuctionJmsServiceExecution(JoinPoint joinPoint){
         logger.trace(LoggingAspectHelper.getMethodExecutionMessage(joinPoint));
     }
