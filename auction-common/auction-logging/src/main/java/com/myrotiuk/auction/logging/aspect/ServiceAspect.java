@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
-public class JmsMessageAspect {
+public class ServiceAspect {
 
-    Logger logger = LogManager.getLogger(JmsMessageAspect.class);
+    Logger logger = LogManager.getLogger(ServiceAspect.class);
 
-    @Before("execution( * com.myrotiuk.auction.jms.service.*.*(..))")
+    @Before("execution( * com.myrotiuk.auction.*.service.*.*(..))")
     public void logAuctionJmsServiceExecution(JoinPoint joinPoint){
-        logger.debug(LoggingAspectHelper.getMethodExecutionMessage(joinPoint));
+        logger.trace(LoggingAspectHelper.getMethodExecutionMessage(joinPoint));
     }
 
 }

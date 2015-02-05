@@ -17,7 +17,7 @@ public class ControllerAspect {
 
     Logger logger = LogManager.getLogger(ControllerAspect.class);
 
-    @Before("execution(* com.myrotiuk.auction.web.controller.*.*(..))")
+    @Before("execution(* com.myrotiuk.auction.*.web.controller.*.*(..))")
     public void logControllerRequests(JoinPoint joinPoint){
         logger.debug(LoggingAspectHelper.getMethodExecutionMessage(joinPoint));
     }

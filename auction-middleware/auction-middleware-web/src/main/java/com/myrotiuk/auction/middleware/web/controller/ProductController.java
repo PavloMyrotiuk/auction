@@ -6,6 +6,7 @@ import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/rest/product")
 public class ProductController {
 
-    Logger logger = LogManager.getLogger(ProductController.class);
-
     @Autowired
     private ProductService productService;
 
@@ -27,7 +26,6 @@ public class ProductController {
     public ProductVO getById(@PathVariable("id") long id){
         Product product = new Product();
         product.setId(id);
-
         productService.sendCreatedProductMessage(product);
         return new ProductVO();
     }

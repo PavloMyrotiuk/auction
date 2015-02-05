@@ -5,10 +5,7 @@ dependencies{
     provided "org.springframework:spring-web:$springVersion@jar"
     provided "org.springframework:spring-webmvc:$springVersion@jar"
 
-    provided "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
-
     provided project(':auction-common:auction-core')
     provided project(':auction-middleware:auction-middleware-service-api')
 
-    provided "org.apache.logging.log4j:log4j-api:$log4jVersion@jar"
 }
