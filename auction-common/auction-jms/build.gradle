@@ -1,14 +1,10 @@
-dependencies {
+dependencies{
     provided "org.springframework:spring-context:$springVersion@jar"
     provided "org.springframework:spring-beans:$springVersion@jar"
-    provided "org.springframework:spring-core:$springVersion@jar"
     provided "org.springframework:spring-jms:$springVersion@jar"
 
     provided "org.apache.activemq:activemq-core:$activemqcoreVersion"
 
     provided project(':auction-common:auction-core')
-    provided project(':auction-common:auction-jms')
-    provided project(':auction-engine:auction-engine-service-api')
-
 
 }

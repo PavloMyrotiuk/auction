@@ -7,5 +7,6 @@ dependencies {
     provided "org.apache.activemq:activemq-core:$activemqcoreVersion"
 
     provided project(':auction-common:auction-core')
+    provided project(':auction-common:auction-jms')
     provided project(':auction-middleware:auction-middleware-service-api')
 }

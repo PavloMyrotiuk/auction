@@ -3,6 +3,7 @@ project(':auction-middleware:auction-middleware-war'){
 
         compile project(':auction-common:auction-core')
         compile project(':auction-common:auction-logging')
+        compile project(':auction-common:auction-jms')
         compile project(':auction-middleware:auction-middleware-persistence')
         compile project(':auction-middleware:auction-middleware-persistence-api')
         compile project(':auction-middleware:auction-middleware-service')
@@ -47,6 +48,7 @@ project(':auction-engine:auction-engine-war'){
     dependencies{
         compile project(':auction-common:auction-core')
         compile project(':auction-common:auction-logging')
+        compile project(':auction-common:auction-jms')
         compile project(':auction-engine:auction-engine-persistence')
         compile project(':auction-engine:auction-engine-persistence-api')
         compile project(':auction-engine:auction-engine-service')

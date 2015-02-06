@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.middleware.service.annotation;
+package com.myrotiuk.auction.common.jms.annotation;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
