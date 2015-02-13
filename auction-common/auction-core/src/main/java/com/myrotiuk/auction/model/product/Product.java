@@ -5,7 +5,9 @@ import com.myrotiuk.auction.model.category.Category;
 import com.myrotiuk.auction.model.user.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,6 +18,7 @@ import java.util.Date;
 @Document(collection = "products")
 public class Product implements BaseEntity<ObjectId> {
 
+    @Version
     private int version;
 
     @Id
@@ -26,8 +29,11 @@ public class Product implements BaseEntity<ObjectId> {
     private String title;
     private String description;
     private ProductStatus productStatus;
+    @DBRef
     private Category category;
+    @DBRef
     private User owner;
+    @DBRef
     private User winner;
 
     public int getVersion() {

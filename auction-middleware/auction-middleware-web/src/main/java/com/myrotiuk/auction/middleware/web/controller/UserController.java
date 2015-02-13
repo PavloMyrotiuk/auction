@@ -25,7 +25,7 @@ public class UserController {
     public User persistUser(@PathVariable("name") String name){
         User u = new User();
         u.setName(name);
-        userService.addUser(u);
+        userService.createUser(u);
         return u;
     }
 }
