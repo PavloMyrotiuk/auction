@@ -1,18 +1,34 @@
 package com.myrotiuk.auction.model.product;
 
+import com.myrotiuk.auction.model.BaseEntity;
+import com.myrotiuk.auction.model.category.Category;
+import com.myrotiuk.auction.model.user.User;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Created by pav on 1/29/15.
  */
-public class Product {
+@Document(collection = "products")
+public class Product implements BaseEntity<ObjectId> {
 
     private int version;
-    private long id;
+
+    @Id
+    private ObjectId id;
+    private Date addedDate;
+    private Date validDate;
     private BigDecimal price;
     private String title;
     private String description;
     private ProductStatus productStatus;
+    private Category category;
+    private User owner;
+    private User winner;
 
     public int getVersion() {
         return version;
@@ -22,11 +38,10 @@ public class Product {
         this.version = version;
     }
 
-    public long getId() {
+    @Override
+    public ObjectId getId() {
         return id;
     }
-
-    public void setId(long id ){this.id = id;}
 
     public BigDecimal getPrice() {
         return price;
@@ -59,4 +74,14 @@ public class Product {
     public void setProductStatus(ProductStatus productStatus) {
         this.productStatus = productStatus;
     }
+
+    public Category getCategory() {return category; }
+
+    public void setCategory(Category category) {this.category = category;}
+
+    public Date getAddedDate() { return addedDate;}
+
+    public void setAddedDate(Date addedDate) {this.addedDate = addedDate;}
+
+
 }

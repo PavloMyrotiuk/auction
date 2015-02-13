@@ -9,4 +9,9 @@ dependencies {
     provided project(':auction-common:auction-core')
     provided project(':auction-common:auction-jms')
     provided project(':auction-middleware:auction-middleware-service-api')
+    provided project(':auction-middleware:auction-middleware-persistence-api')
+
+    provided "org.mongodb:bson:$mongoBsonVersion@jar"
+    provided "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
+    provided "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
 }

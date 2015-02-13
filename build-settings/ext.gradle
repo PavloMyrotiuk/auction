@@ -9,6 +9,10 @@ allprojects {
         slf4jVersion = '1.7.7'
         aspectjVersion='1.8.4'
         jackson2Version='2.5.0'
-
+        mongoJavaDriverVersion='2.13.0'
+        mongoBsonVersion='2.13.0'
+        springDataMongoDbVersion='1.5.2.RELEASE'
+        springDataCommonsCoreVersion='1.4.1.RELEASE'
+        springDataCommonsVersion='1.8.2.RELEASE'
     }
 }

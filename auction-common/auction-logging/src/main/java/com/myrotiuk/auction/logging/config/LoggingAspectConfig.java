@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.middleware.config;
+package com.myrotiuk.auction.logging.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

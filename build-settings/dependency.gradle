@@ -40,6 +40,12 @@ project(':auction-middleware:auction-middleware-war'){
 
         compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
 
+        compile "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion@jar"
+        compile "org.mongodb:bson:$mongoBsonVersion@jar"
+        compile "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
+        compile "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
+        compile "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
+
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }
 }
@@ -81,7 +87,15 @@ project(':auction-engine:auction-engine-war'){
         compile "org.apache.logging.log4j:log4j-slf4j-impl:$log4jVersion@jar"
         compile "org.slf4j:slf4j-api:$slf4jVersion@jar"
 
-        compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
+        compile "org.apache.activemq:activemq-core:$activemqcoreVersion@jar"
+
+        compile "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion@jar"
+        compile "org.mongodb:bson:$mongoBsonVersion@jar"
+        compile "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
+        compile "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
+        compile "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
+
+
 
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }

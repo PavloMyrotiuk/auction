@@ -1,0 +1,12 @@
+dependencies {
+    provided project(':auction-common:auction-core')
+    provided project(':auction-middleware:auction-middleware-persistence-api')
+
+    provided "org.springframework:spring-context:$springVersion@jar"
+    provided "org.springframework:spring-beans:$springVersion@jar"
+
+    provided "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion@jar"
+    provided "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
+    provided "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
+
+}
