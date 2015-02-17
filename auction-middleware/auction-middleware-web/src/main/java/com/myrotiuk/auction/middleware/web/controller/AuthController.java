@@ -5,7 +5,6 @@ import javax.ws.rs.FormParam;
 import com.myrotiuk.auction.middleware.web.security.utils.TokenUtils;
 import com.myrotiuk.auction.middleware.web.security.model.SecurityToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
