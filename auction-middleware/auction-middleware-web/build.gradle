@@ -2,8 +2,16 @@ dependencies{
     provided "org.springframework:spring-context:$springVersion@jar"
     provided "org.springframework:spring-beans:$springVersion@jar"
     provided "org.springframework:spring-core:$springVersion@jar"
+    provided "org.springframework:spring-tx:$springVersion@jar"
     provided "org.springframework:spring-web:$springVersion@jar"
     provided "org.springframework:spring-webmvc:$springVersion@jar"
+
+    provided "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
+    provided "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
+
+//    provided "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
+    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+    provided "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 
     provided project(':auction-common:auction-core')
     provided project(':auction-middleware:auction-middleware-service-api')

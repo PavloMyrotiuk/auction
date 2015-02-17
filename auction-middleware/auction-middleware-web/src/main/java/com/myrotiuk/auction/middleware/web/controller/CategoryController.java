@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by pav on 2/13/15.
  */
 @RestController
-@RequestMapping("/rest/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired

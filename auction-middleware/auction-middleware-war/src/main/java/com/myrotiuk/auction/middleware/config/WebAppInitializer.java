@@ -24,7 +24,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
     private void configureDispatcherServlet(ServletContext container, AnnotationConfigWebApplicationContext rootContext) {
         ServletRegistration.Dynamic dispatcher = container.addServlet("DispatcherServlet", new DispatcherServlet(rootContext));
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/*");
+        dispatcher.addMapping("/rest/*");
     }
 
     private AnnotationConfigWebApplicationContext getRootApplicationContext(){

@@ -8,4 +8,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * Created by pav on 2/12/15.
  */
 public interface UserRepository extends MongoRepository<User, ObjectId> {
+
+    User findByName(String userName);
 }

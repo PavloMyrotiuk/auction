@@ -14,5 +14,8 @@ allprojects {
         springDataMongoDbVersion='1.5.2.RELEASE'
         springDataCommonsCoreVersion='1.4.1.RELEASE'
         springDataCommonsVersion='1.8.2.RELEASE'
+        springSecurityVersion='3.2.5.RELEASE'
+        javaxWsRsApiVersion='2.0.1'
+        commonsBeanUtilsVersion='1.9.2'
     }
 }

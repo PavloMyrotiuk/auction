@@ -46,6 +46,15 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
         compile "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
 
+
+        compile "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
+        compile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+        compile "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
+
+        compile "commons-beanutils:commons-beanutils:$commonsBeanUtilsVersion@jar"
+
+        compile "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
+
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }
 }

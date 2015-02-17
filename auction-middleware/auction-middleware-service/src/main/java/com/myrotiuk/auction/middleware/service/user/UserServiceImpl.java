@@ -16,7 +16,12 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void createUser(User entity) {
-        userRepository.save(entity);
+    public User create(User entity) {
+        return userRepository.save(entity);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        return userRepository.findByName(userName);
     }
 }

@@ -7,5 +7,7 @@ import com.myrotiuk.auction.model.user.User;
  */
 public interface UserService {
 
-    void createUser(User entity);
+    User create(User entity);
+
+    User getUserByUserName(String userName);
 }

@@ -5,6 +5,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Set;
+
 /**
  * Created by pav on 2/11/15.
  */
@@ -14,23 +16,17 @@ public class User implements BaseEntity<ObjectId> {
     @Id
     private ObjectId id;
 
-    private String login;
-
     private String name;
 
     private String email;
 
+    private String password;
+
+    private Set<String> roles;
+
     @Override
     public ObjectId getId() {
         return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getName() {
@@ -47,5 +43,21 @@ public class User implements BaseEntity<ObjectId> {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 }
