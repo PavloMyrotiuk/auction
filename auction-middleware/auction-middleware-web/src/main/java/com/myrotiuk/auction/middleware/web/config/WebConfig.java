@@ -10,7 +10,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,7 +27,7 @@ import java.util.Set;
 @ComponentScan(basePackages = {"com.myrotiuk.auction.middleware.web.controller"
                               ,"com.myrotiuk.auction.middleware.web.security"
                               ,"com.myrotiuk.auction.middleware.web"})
-public class WebConfig {
+public class WebConfig extends WebMvcConfigurationSupport {
     @Bean
     public ConversionService conversionService(){
         ConversionServiceFactoryBean csfb = new ConversionServiceFactoryBean();
@@ -38,5 +41,12 @@ public class WebConfig {
         result.add(new Product2ProductVOConverter());
         result.add(new User2UserDetailsConverter());
         return result;
+    }
+
+    @Bean
+    public RequestMappingHandlerAdapter requestMappingHandlerAdapter(){
+        RequestMappingHandlerAdapter handlerAdapter = super.requestMappingHandlerAdapter();
+        handlerAdapter.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        return handlerAdapter;
     }
 }

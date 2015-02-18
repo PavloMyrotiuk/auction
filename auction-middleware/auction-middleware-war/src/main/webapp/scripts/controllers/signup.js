@@ -36,6 +36,6 @@ auctionApp
                 bootbox.alert("Please try again later." );
             }
 
-            UserResource.save(user, {}, successFn, errorFn);
+            UserResource.save({},user, successFn, errorFn);
         };
     }]);
