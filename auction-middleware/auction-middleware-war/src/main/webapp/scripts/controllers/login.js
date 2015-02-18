@@ -17,6 +17,8 @@ auctionApp
         };
 
         $scope.login = function(credentials) {
+            var hPassword = CryptoJS.SHA3(credentials.password);
+            credentials.password = hPassword.toString();
 
             var successFn = function(){
                 bootbox.alert("Yes" );
@@ -26,7 +28,7 @@ auctionApp
                 bootbox.alert("No" );
             }
 
-            LoginResource.authenticate($.param({username:$scope.credentials.username, password:$scope.credentials.password}),
+            LoginResource.authenticate($.param({username:credentials.username, password:credentials.password}),
                 function(authenticationResult){
                     var authToken = authenticationResult.token;
                     $rootScope.authToken = authToken;

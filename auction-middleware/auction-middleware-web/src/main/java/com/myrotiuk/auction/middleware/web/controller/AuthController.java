@@ -37,7 +37,7 @@ public class AuthController {
      *            The password of the user.
      * @return Authentication token.
      */
-    @RequestMapping(value = "authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public SecurityToken authenticate(@FormParam("username") String username, @FormParam("password") String password) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
