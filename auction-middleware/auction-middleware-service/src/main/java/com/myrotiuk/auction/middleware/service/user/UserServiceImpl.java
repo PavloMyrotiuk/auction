@@ -3,6 +3,8 @@ package com.myrotiuk.auction.middleware.service.user;
 import com.myrotiuk.auction.middleware.persistence.repository.UserRepository;
 import com.myrotiuk.auction.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUserName(String userName) {
-        return userRepository.findByName(userName);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username);
     }
 }

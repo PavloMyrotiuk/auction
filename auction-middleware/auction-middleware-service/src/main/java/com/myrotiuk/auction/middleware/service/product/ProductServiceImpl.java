@@ -1,8 +1,11 @@
 package com.myrotiuk.auction.middleware.service.product;
 
+import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
 import com.myrotiuk.auction.message.ProductCreatedMessage;
 import com.myrotiuk.auction.model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,12 +15,19 @@ import org.springframework.stereotype.Service;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    private JmsProductService jmsProductService;
+    @CreatedProductTemplate
+    private JmsTemplate jmsTemplate;
+
+    @Autowired
+    private ConversionService conversionService;
 
     @Override
     public void sendCreatedProductMessage(Product product) {
-        ProductCreatedMessage message = new ProductCreatedMessage();
-        message.setProductId(product.getId());
-        jmsProductService.sendNewProductCreatedMessage(message);
+        jmsTemplate.convertAndSend(conversionService.convert(product, ProductCreatedMessage.class));
+    }
+
+    @Override
+    public Product create(Product entity) {
+        return null;
     }
 }

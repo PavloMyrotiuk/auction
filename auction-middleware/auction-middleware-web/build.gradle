@@ -9,7 +9,7 @@ dependencies{
     provided "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
     provided "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
 
-//    provided "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
+    provided "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
     provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
     provided "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 

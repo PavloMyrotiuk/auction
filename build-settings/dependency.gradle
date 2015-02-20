@@ -1,5 +1,5 @@
-project(':auction-middleware:auction-middleware-war'){
-    dependencies{
+project(':auction-middleware:auction-middleware-war') {
+    dependencies {
 
         compile project(':auction-common:auction-core')
         compile project(':auction-common:auction-logging')
@@ -11,6 +11,8 @@ project(':auction-middleware:auction-middleware-war'){
         compile project(':auction-middleware:auction-middleware-web')
 
         testCompile "junit:junit:$junitVersion@jar"
+        testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
+//        testCompile "org.springframework:spring-test:$springVersion@jar"
 
         compile "org.springframework:spring-context:$springVersion@jar"
         compile "org.springframework:spring-beans:$springVersion@jar"
@@ -51,7 +53,7 @@ project(':auction-middleware:auction-middleware-war'){
         compile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
         compile "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 
-        compile "commons-beanutils:commons-beanutils:$commonsBeanUtilsVersion@jar"
+//        compile "commons-beanutils:commons-beanutils:$commonsBeanUtilsVersion@jar"
 
         compile "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
 
@@ -59,8 +61,8 @@ project(':auction-middleware:auction-middleware-war'){
     }
 }
 
-project(':auction-engine:auction-engine-war'){
-    dependencies{
+project(':auction-engine:auction-engine-war') {
+    dependencies {
         compile project(':auction-common:auction-core')
         compile project(':auction-common:auction-logging')
         compile project(':auction-common:auction-jms')

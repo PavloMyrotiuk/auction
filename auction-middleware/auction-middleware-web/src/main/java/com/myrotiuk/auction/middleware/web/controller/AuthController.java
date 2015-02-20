@@ -2,6 +2,7 @@ package com.myrotiuk.auction.middleware.web.controller;
 
 import javax.ws.rs.FormParam;
 
+import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.security.utils.TokenUtils;
 import com.myrotiuk.auction.middleware.web.security.model.SecurityToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    private UserDetailsService userService;
+    private UserService userService;
 
     @Autowired
     private AuthenticationManager authenticationManager;

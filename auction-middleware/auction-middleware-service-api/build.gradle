@@ -1,3 +1,6 @@
 dependencies {
     provided project(':auction-common:auction-core')
+
+    provided "org.springframework:spring-beans:$springVersion@jar"
+    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
 }

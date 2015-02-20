@@ -2,7 +2,6 @@ package com.myrotiuk.auction.middleware.web.config;
 
 import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
 import com.myrotiuk.auction.middleware.web.security.config.SecurityConfig;
-import com.myrotiuk.auction.middleware.web.security.converter.User2UserDetailsConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +38,6 @@ public class WebConfig extends WebMvcConfigurationSupport {
     private Set<Converter> getConverters(){
         Set<Converter> result = new HashSet<>();
         result.add(new Product2ProductVOConverter());
-        result.add(new User2UserDetailsConverter());
         return result;
     }
 

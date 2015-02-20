@@ -5,4 +5,6 @@ dependencies{
     provided "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
     provided "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
     provided "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
+
+    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
 }

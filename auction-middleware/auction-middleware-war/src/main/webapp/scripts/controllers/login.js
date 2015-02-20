@@ -17,8 +17,6 @@ auctionApp
         };
 
         $scope.login = function(credentials) {
-            var hPassword = CryptoJS.SHA3(credentials.password);
-            credentials.password = hPassword.toString();
 
             var successFn = function(){
                 bootbox.alert("Yes" );

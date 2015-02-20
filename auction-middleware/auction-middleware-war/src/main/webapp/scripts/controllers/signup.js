@@ -12,19 +12,17 @@ auctionApp
         $scope.user = {
             password: '',
             name: '',
-            email: ''
+            username: ''
         };
         $scope.reset = function () {
             $scope.user = {
                 password: '',
                 name: '',
-                email: ''
+                username: ''
             };
         };
 
         $scope.submit = function (user) {
-            var hPassword = CryptoJS.SHA3(user.password);
-            user.password = hPassword.toString();
 
             var successFn = function(){
                 $scope.reset();

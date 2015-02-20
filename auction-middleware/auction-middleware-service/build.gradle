@@ -4,6 +4,8 @@ dependencies {
     provided "org.springframework:spring-core:$springVersion@jar"
     provided "org.springframework:spring-jms:$springVersion@jar"
 
+    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+
     provided "org.apache.activemq:activemq-core:$activemqcoreVersion"
 
     provided project(':auction-common:auction-core')

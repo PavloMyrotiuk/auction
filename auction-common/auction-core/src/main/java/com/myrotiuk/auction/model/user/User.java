@@ -4,21 +4,24 @@ import com.myrotiuk.auction.model.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Set;
 
 /**
  * Created by pav on 2/11/15.
  */
 @Document(collection = "users")
-public class User implements BaseEntity<ObjectId> {
+public class User implements BaseEntity<ObjectId>, UserDetails {
 
     @Id
     private ObjectId id;
 
     private String name;
 
-    private String email;
+    private String username;
 
     private String password;
 
@@ -37,16 +40,42 @@ public class User implements BaseEntity<ObjectId> {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public void setPassword(String password) {

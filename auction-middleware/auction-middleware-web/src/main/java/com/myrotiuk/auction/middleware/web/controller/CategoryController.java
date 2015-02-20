@@ -23,7 +23,7 @@ public class CategoryController {
     public Category addCategory(@PathVariable("name") String name) {
         Category c = new Category();
         c.setName(name);
-        categoryService.createCategory(c);
+        categoryService.create(c);
         return c;
     }
 }
