@@ -17,7 +17,7 @@ import java.util.Collection;
 /**
  * Created by pav on 2/17/15.
  */
-@Component(value = "authenticationProvider")
+@Component
 @AuthProvider
 public class MiddlewareAuthenticationProvider implements AuthenticationProvider {
 
