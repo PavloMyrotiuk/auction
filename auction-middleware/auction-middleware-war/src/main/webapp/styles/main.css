@@ -94,3 +94,11 @@ body {
 #login-button{
   margin-right: 4px;
 }
+
+#logout-button{
+  float: right;
+}
+
+#greeting{
+  font-size: x-large;
+}

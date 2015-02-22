@@ -1,36 +1,32 @@
 package com.myrotiuk.auction.middleware.config;
 
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.filter.DelegatingFilterProxy;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.Filter;
 
 /**
  * Created by pav on 1/24/15.
  */
-public class WebAppInitializer implements WebApplicationInitializer{
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
-    public void onStartup(ServletContext container) throws ServletException {
-        AnnotationConfigWebApplicationContext rootContext = getRootApplicationContext();
-        container.addListener(new ContextLoaderListener(rootContext));
-        configureDispatcherServlet(container, rootContext);
+    protected String[] getServletMappings() {
+        return new String[]{"/rest/*"};
     }
 
-    private void configureDispatcherServlet(ServletContext container, AnnotationConfigWebApplicationContext rootContext) {
-        ServletRegistration.Dynamic dispatcher = container.addServlet("DispatcherServlet", new DispatcherServlet(rootContext));
-        dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/rest/*");
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new DelegatingFilterProxy("springSecurityFilterChain")};
     }
 
-    private AnnotationConfigWebApplicationContext getRootApplicationContext(){
-        AnnotationConfigWebApplicationContext rootContext =
-                new AnnotationConfigWebApplicationContext();
-        rootContext.setConfigLocation("com.myrotiuk.auction.middleware.config");
-        return rootContext;
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{MiddlewareConfig.class};
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[0];
     }
 }

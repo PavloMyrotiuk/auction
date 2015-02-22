@@ -2,42 +2,41 @@
 
 /**
  * @ngdoc function
- * @name auctionApp.controller:LoginCtrl
+ * @name auctionApp.controller:LoginController
  * @description
- * # LoginCtrl
+ * # LoginController
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('LoginController', ['$scope','$rootScope',  '$location', 'LoginResource', function ($scope, $rootScope, $location, LoginResource) {
-        $scope.rememberMe = true;
+    .controller('LoginController', ['$scope', 'AuthResource', 'AuthService',
+        function ($scope, AuthResource, AuthService) {
 
-        $scope.credentials = {
-            username: '',
-            password: ''
-        };
+            $scope.credentials = {
+                username: '',
+                password: ''
+            };
 
-        $scope.login = function(credentials) {
-
-            var successFn = function(){
-                bootbox.alert("Yes" );
+            var resetCredentials = function () {
+                $scope.credentials = {
+                    username: '',
+                    password: ''
+                };
             }
 
-            var errorFn = function(){
-                bootbox.alert("No" );
+            var resetPassword = function () {
+                $scope.credentials.password = '';
             }
 
-            LoginResource.authenticate($.param({username:credentials.username, password:credentials.password}),
-                function(authenticationResult){
-                    var authToken = authenticationResult.token;
-                    $rootScope.authToken = authToken;
-                    if ($scope.rememberMe){
-                        $cookieStore.put('authToken', authToken);
-                    }
-                    //LoginResource.get(function(user){
-                    //    $rootScope.user = user;
-                    //    $location.path("/");
-                    //});
-                })
-        };
+            $scope.login = function (credentials) {
 
-    }]);
+                AuthResource.login($.param({username: credentials.username, password: credentials.password}),
+                    function (authenticationResult) {
+                        AuthService.authenticate(authenticationResult);
+                        resetCredentials();
+                    },
+                    resetPassword()
+                );
+            };
+
+        }]);
+

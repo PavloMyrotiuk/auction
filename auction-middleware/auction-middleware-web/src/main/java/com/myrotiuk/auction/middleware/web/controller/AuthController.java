@@ -1,11 +1,14 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
 
 import com.myrotiuk.auction.middleware.service.user.UserService;
-import com.myrotiuk.auction.middleware.web.security.utils.TokenUtils;
-import com.myrotiuk.auction.middleware.web.security.model.SecurityToken;
+import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,6 +31,9 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private ConversionService conversionService;
+
     /**
      * Authenticates a user and creates an authentication token.
      *
@@ -38,7 +44,8 @@ public class AuthController {
      * @return Authentication token.
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public SecurityToken authenticate(@FormParam("username") String username, @FormParam("password") String password) {
+    @PreAuthorize("permitAll")
+    public UserVO authenticate(@FormParam("username") String username, @FormParam("password") String password) {
 
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
@@ -46,7 +53,12 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetails userDetails = userService.loadUserByUsername(username);
-        return new SecurityToken(TokenUtils.createToken(userDetails));
+        return conversionService.convert(userDetails, UserVO.class);
+    }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @PreAuthorize("permitAll")
+    public void logout(HttpServletRequest request) throws ServletException {
+        request.logout();
     }
 }

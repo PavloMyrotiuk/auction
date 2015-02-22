@@ -5,9 +5,12 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,7 +28,7 @@ public class User implements BaseEntity<ObjectId>, UserDetails {
 
     private String password;
 
-    private Set<String> roles;
+    private Set<UserRole> roles;
 
     @Override
     public ObjectId getId() {
@@ -46,7 +49,13 @@ public class User implements BaseEntity<ObjectId>, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if (roles == null) return Collections.emptySet();
+        Set<GrantedAuthority> result = new HashSet<>();
+        for (UserRole role : roles) {
+            result.add(new SimpleGrantedAuthority(role.toString()));
+        }
+
+        return result;
     }
 
     public String getPassword() {
@@ -82,11 +91,11 @@ public class User implements BaseEntity<ObjectId>, UserDetails {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
+    public Set<UserRole> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
     }
 }
