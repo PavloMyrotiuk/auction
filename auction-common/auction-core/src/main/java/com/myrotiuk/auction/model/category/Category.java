@@ -15,11 +15,26 @@ import java.util.List;
 @Document(collection = "categories")
 public class Category implements BaseEntity<ObjectId> {
 
+    public enum KEY{
+        ID("id"),
+        NAME("name"),
+        CHILDREN_CATEGORY("childrenCategories");
+
+        KEY(String name) {
+            this.keyName = name;
+        }
+        private String keyName;
+
+        @Override
+        public String toString() {
+            return this.keyName;
+        }
+    }
+
     @Id
     private ObjectId id;
 
-    @DBRef
-    private Category parentCategory;
+    private List<Category> childrenCategories;
 
     private String name;
 
@@ -29,12 +44,12 @@ public class Category implements BaseEntity<ObjectId> {
         return id;
     }
 
-    public Category getParentCategory() {
-        return parentCategory;
+    public List<Category> getChildrenCategories() {
+        return childrenCategories;
     }
 
-    public void setParentCategory(Category parentCategory) {
-        this.parentCategory = parentCategory;
+    public void setChildrenCategories(List<Category> childrenCategories) {
+        this.childrenCategories = childrenCategories;
     }
 
     public String getName() {

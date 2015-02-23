@@ -1,8 +1,8 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
+import com.myrotiuk.auction.middleware.service.product.ProductService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.model.product.Product;
-import com.myrotiuk.auction.middleware.service.product.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

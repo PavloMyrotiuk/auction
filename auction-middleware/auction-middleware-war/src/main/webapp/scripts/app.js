@@ -17,13 +17,17 @@ auctionApp.config(function ($routeProvider) {
             templateUrl: 'views/main.html',
             controller: 'MainController'
         })
-        .when('/about', {
-            templateUrl: 'views/about.html',
-            controller: 'AboutCtrl'
-        })
         .when('/signup', {
             templateUrl: 'views/signup.html',
             controller: 'SignUpController'
+        })
+        .when('/search', {
+            templateUrl: 'views/search.html',
+            controller: 'SearchProductController'
+        })
+        .when('/add', {
+            templateUrl: 'views/add.html',
+            controller: 'AddProductController'
         })
         .otherwise({
             redirectTo: '/'

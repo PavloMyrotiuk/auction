@@ -8,5 +8,5 @@ import com.myrotiuk.auction.model.category.Category;
 /**
  * Created by pav on 2/12/15.
  */
-public interface CategoryRepository  extends MongoRepository<Category, ObjectId> {
+public interface CategoryRepository  extends MongoRepository<Category, ObjectId>, CategoryRepositoryCustom {
 }

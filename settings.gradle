@@ -10,3 +10,5 @@ include 'auction-engine:auction-engine-persistence-api', 'auction-engine:auction
 include 'auction-engine:auction-engine-service-api', 'auction-engine:auction-engine-service'
 include 'auction-engine:auction-engine-war'
 
+include 'auction-db'
+
