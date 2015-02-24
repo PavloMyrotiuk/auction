@@ -21,21 +21,44 @@ var electronic = {
     "childrenCategories": []
 };
 
+var sportCategories = [{
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    name: "bicycle"
+}, {
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    name: "basketball"
+}, {
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    name: "ski"
+}, {
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    name: "bobsleigh"
+}, {
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    name: "surfing"
+}
+];
+var sport = {
+    "_class": "com.myrotiuk.auction.model.category.Category",
+    "name": "sport",
+    "childrenCategories": []
+};
+
 function addCategories(categories, parent) {
 
     db.categories.insert(parent);
     var parentId = db.categories.findOne({"name": parent.name})._id;
-    //print(parentId)
 
     for (var i in categories) {
         var category = categories[i];
         db.categories.insert(category);
+
         var categoryId = db.categories.findOne({"name": category.name})._id;
-        var children  = db.categories.find({_id: parentId}, {childrenCategories:1, _id:0});
-        print(children)
-    }
-    ;
+        var child = '{ $ref : categories, $id: ObjectId('+ categoryId + ')}';
+        db.categories.update({_id: parentId}, {$addToSet:{childrenCategories:child}});
+    };
 
 }
 
 addCategories(electronicCategories, electronic);
+addCategories(sportCategories, sport);

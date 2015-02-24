@@ -34,6 +34,7 @@ public class Category implements BaseEntity<ObjectId> {
     @Id
     private ObjectId id;
 
+    @DBRef
     private List<Category> childrenCategories;
 
     private String name;
