@@ -17,9 +17,9 @@ dependencies{
     provided project(':auction-middleware:auction-middleware-service-api')
 
     testCompile "junit:junit:$junitVersion@jar"
-    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
-    testCompile project(':auction-common:auction-core')
-    testCompile "org.springframework:spring-core:$springVersion@jar"
-    testCompile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+//    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
+//    testCompile project(':auction-common:auction-core')
+//    testCompile "org.springframework:spring-core:$springVersion@jar"
+//    testCompile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
 
 }

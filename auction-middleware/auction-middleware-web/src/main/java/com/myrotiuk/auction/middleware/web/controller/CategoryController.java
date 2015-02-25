@@ -1,11 +1,10 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
 import com.myrotiuk.auction.middleware.service.category.CategoryService;
-import com.myrotiuk.auction.model.category.Category;
+import com.myrotiuk.auction.middleware.web.config.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,17 +21,26 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PreAuthorize("permitAll")
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Category> getParentCategories() {
-        return categoryService.findParentCategories();
-    }
+    @Autowired
+    private CustomConversionService conversionService;
 
     @PreAuthorize("permitAll")
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public Category addCategory(@PathVariable("name") String name) {
-        Category c = new Category();
-        c.setName(name);
-        return categoryService.create(c);
+    @RequestMapping(method = RequestMethod.GET)
+    public List<CategoryVO> getParentCategories() {
+        return conversionService.convertAll(categoryService.findParentCategories(), CategoryVO.class);
     }
+
+//    @PreAuthorize("permitAll")
+//    @RequestMapping(value = "/parent", method = RequestMethod.GET)
+//    public List<Category> addCategory(String name) {
+//        return categoryService.findParentCategories();
+//    }
+//
+//    @PreAuthorize("permitAll")
+//    @RequestMapping(value = "/parent", method = RequestMethod.GET)
+//    public Category addCategory(String name) {
+//        return categoryService.findParentCategories();
+//    }
+
+
 }

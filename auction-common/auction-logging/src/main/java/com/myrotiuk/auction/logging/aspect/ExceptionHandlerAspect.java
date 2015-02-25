@@ -13,8 +13,8 @@ import java.io.StringWriter;
 /**
  * Created by pav on 1/28/15.
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class ExceptionHandlerAspect {
 
     Logger logger = LogManager.getLogger(ExceptionHandlerAspect.class);

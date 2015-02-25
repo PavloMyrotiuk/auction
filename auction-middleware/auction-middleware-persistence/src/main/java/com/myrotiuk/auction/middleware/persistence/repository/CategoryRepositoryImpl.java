@@ -1,6 +1,7 @@
 package com.myrotiuk.auction.middleware.persistence.repository;
 
 import com.myrotiuk.auction.model.category.Category;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
@@ -24,7 +25,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     }
 
     @Override
-    public List<Category> findSubCategories(String parentCategoryName) {
+    public List<Category> findSubCategories(ObjectId parentCategoryId) {
         return null;
     }
 }

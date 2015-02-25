@@ -2,6 +2,7 @@ package com.myrotiuk.auction.middleware.service.category;
 
 import com.myrotiuk.auction.middleware.service.BaseEntityService;
 import com.myrotiuk.auction.model.category.Category;
+import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface CategoryService extends BaseEntityService<Category> {
     List<Category> findParentCategories();
-    List<Category> findSubCategories(String parentCategoryName);
+    List<Category> findSubCategories(ObjectId parentCategoryId);
 }

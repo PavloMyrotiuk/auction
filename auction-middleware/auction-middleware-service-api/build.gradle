@@ -3,4 +3,6 @@ dependencies {
 
     provided "org.springframework:spring-beans:$springVersion@jar"
     provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+
+    provided "org.mongodb:bson:$mongoBsonVersion@jar"
 }

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
 
 import com.myrotiuk.auction.middleware.service.user.UserService;
+import com.myrotiuk.auction.middleware.web.config.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -32,7 +33,7 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private ConversionService conversionService;
+    private CustomConversionService conversionService;
 
     /**
      * Authenticates a user and creates an authentication token.
