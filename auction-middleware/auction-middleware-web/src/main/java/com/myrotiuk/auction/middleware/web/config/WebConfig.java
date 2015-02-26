@@ -1,24 +1,16 @@
 package com.myrotiuk.auction.middleware.web.config;
 
-import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
-import com.myrotiuk.auction.middleware.web.converter.User2UserVOConverter;
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionServiceFactoryBean;
 import com.myrotiuk.auction.middleware.web.security.config.SecurityConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.ConversionServiceFactoryBean;
-import org.springframework.core.convert.ConversionService;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
-
-import javax.ws.rs.BeanParam;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by pav on 1/30/15.

@@ -1,7 +1,5 @@
-package com.myrotiuk.auction.middleware.web.config;
+package com.myrotiuk.auction.middleware.web.converter.service;
 
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.core.convert.converter.ConverterFactory;
 import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.util.Assert;
 
@@ -20,10 +18,5 @@ public class CustomConversionService extends DefaultConversionService {
             result.add(convert(elem, targetType));
         }
         return result;
-    }
-
-    @Override
-    public void addConverter(Converter<?, ?> converter) {
-        super.addConverter(converter);
     }
 }

@@ -4,6 +4,7 @@ dependencies {
 
     provided "org.springframework:spring-context:$springVersion@jar"
     provided "org.springframework:spring-beans:$springVersion@jar"
+    provided "org.springframework:spring-core:$springVersion@jar"
 
     provided "org.mongodb:bson:$mongoBsonVersion@jar"
     provided "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion@jar"

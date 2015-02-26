@@ -12,7 +12,7 @@ public class Product2ProductVOConverter implements Converter<Product, ProductVO>
     public ProductVO convert(Product source) {
         ProductVO result = new ProductVO();
         result.setDescription(source.getDescription());
-//        result.setId(source.getId());
+        result.setId(source.getId().toString());
         result.setPrice(source.getPrice());
         result.setProductStatus(source.getProductStatus());
         result.setTitle(source.getTitle());

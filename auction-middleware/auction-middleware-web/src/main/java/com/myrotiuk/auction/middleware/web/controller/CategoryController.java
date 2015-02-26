@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
 import com.myrotiuk.auction.middleware.service.category.CategoryService;
-import com.myrotiuk.auction.middleware.web.config.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.CategoryVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,7 +25,7 @@ public class CategoryController {
     private CustomConversionService conversionService;
 
     @PreAuthorize("permitAll")
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/parent", method = RequestMethod.GET)
     public List<CategoryVO> getParentCategories() {
         return conversionService.convertAll(categoryService.findParentCategories(), CategoryVO.class);
     }

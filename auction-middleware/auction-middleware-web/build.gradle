@@ -1,4 +1,7 @@
 dependencies{
+    provided project(':auction-common:auction-core')
+    provided project(':auction-middleware:auction-middleware-service-api')
+
     provided "org.springframework:spring-context:$springVersion@jar"
     provided "org.springframework:spring-beans:$springVersion@jar"
     provided "org.springframework:spring-core:$springVersion@jar"
@@ -13,13 +16,9 @@ dependencies{
     provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
     provided "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 
-    provided project(':auction-common:auction-core')
-    provided project(':auction-middleware:auction-middleware-service-api')
+    provided "org.mongodb:bson:$mongoBsonVersion@jar"
 
     testCompile "junit:junit:$junitVersion@jar"
-//    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
-//    testCompile project(':auction-common:auction-core')
-//    testCompile "org.springframework:spring-core:$springVersion@jar"
-//    testCompile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+    testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
 
 }

@@ -54,8 +54,7 @@ function addCategories(categories, parent) {
         db.categories.insert(category);
 
         var categoryId = db.categories.findOne({"name": category.name})._id;
-        var child = '{ $ref : categories, $id: ObjectId('+ categoryId + ')}';
-        db.categories.update({_id: parentId}, {$addToSet:{childrenCategories:child}});
+        db.categories.update({"_id": parentId}, {$addToSet:{childrenCategories:{"$ref": "categories", "$id": "ObjectId("+ categoryId+")"}}});
     };
 
 }

@@ -2,7 +2,11 @@ package com.myrotiuk.auction.middleware.persistence.repository;
 
 import com.myrotiuk.auction.model.category.Category;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,15 +17,15 @@ import java.util.List;
 @Repository
 public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 
+    @Autowired
     private MongoOperations mongoOperations;
 
     @Override
     public List<Category> findParentCategories() {
-//        Criteria parentCategoryDoesNotExists = Criteria.where(Category.KEY.PARENT_CATEGORY.toString()).exists(false);
-//        Criteria parentCategoryIsEmpty = Criteria.where(Category.KEY.PARENT_CATEGORY.toString()).size();
-//        return mongoOperations.find(new Query(Criteria.orOperator(,
-//                Criteria.where(Category.KEY.PARENT_CATEGORY.toString()))), Category.class);
-        return null;
+        Criteria childrenCategoryExists = Criteria.where(Category.KEY.CHILDREN_CATEGORY.toString()).exists(true);
+        Criteria childrenCategoryIsNotEmpty = Criteria.where("$where").is("this.childrenCategories.length>0");
+        Query query = new Query(new Criteria().andOperator(childrenCategoryExists, childrenCategoryIsNotEmpty));
+        return mongoOperations.find(query, Category.class);
     }
 
     @Override
