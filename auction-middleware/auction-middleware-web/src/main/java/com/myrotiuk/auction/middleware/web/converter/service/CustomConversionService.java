@@ -12,6 +12,7 @@ import java.util.List;
 public class CustomConversionService extends DefaultConversionService {
 
     public <T> List<T> convertAll(List<?> elems, Class<T> targetType){
+        if (elems == null) return null;
         Assert.notNull(targetType, "The targetType to convert to cannot be null");
         List<T> result = new ArrayList<>();
         for (Object elem : elems){

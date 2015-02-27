@@ -1,7 +1,6 @@
 package com.myrotiuk.auction.middleware.persistence.repository;
 
 import com.myrotiuk.auction.model.category.Category;
-import org.bson.types.ObjectId;
 
 import java.util.List;
 
@@ -11,5 +10,4 @@ import java.util.List;
 public interface CategoryRepositoryCustom {
 
     List<Category> findParentCategories();
-    List<Category> findSubCategories(ObjectId parentCategoryId);
 }

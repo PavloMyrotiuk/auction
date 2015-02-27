@@ -4,9 +4,12 @@ import com.myrotiuk.auction.middleware.web.converter.Category2CategoryVOConverte
 import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.User2UserVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +17,16 @@ import java.util.Set;
 /**
  * Created by pav on 2/25/15.
  */
-public class CustomConversionServiceFactoryBean extends ConversionServiceFactoryBean {
+public class CustomConversionServiceFactoryBean extends ConversionServiceFactoryBean implements InitializingBean {
+
+    @Autowired
+    private Category2CategoryVOConverter category2CategoryVOConverter;
+
+    @Autowired
+    private Product2ProductVOConverter product2ProductVOConverter;
+
+    @Autowired
+    private User2UserVOConverter user2UserVOConverter;
 
     @Override
     protected CustomConversionService createConversionService() {
@@ -36,10 +48,15 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
 
     private Set<Converter> getConverters() {
         Set<Converter> result = new HashSet<>();
-        result.add(new Product2ProductVOConverter());
-        result.add(new User2UserVOConverter());
-        result.add(new Category2CategoryVOConverter());
+        result.add(product2ProductVOConverter);
+        result.add(user2UserVOConverter);
+        result.add(category2CategoryVOConverter);
         return result;
     }
 
+    @Override
+    public void afterPropertiesSet() {
+        super.afterPropertiesSet();
+        category2CategoryVOConverter.setCustomConversionService((CustomConversionService) this.getObject());
+    }
 }

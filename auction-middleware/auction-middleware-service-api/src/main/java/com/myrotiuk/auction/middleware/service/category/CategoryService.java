@@ -11,5 +11,4 @@ import java.util.List;
  */
 public interface CategoryService extends BaseEntityService<Category> {
     List<Category> findParentCategories();
-    List<Category> findSubCategories(ObjectId parentCategoryId);
 }
