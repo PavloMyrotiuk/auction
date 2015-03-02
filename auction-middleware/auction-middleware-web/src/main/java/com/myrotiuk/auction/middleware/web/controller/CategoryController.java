@@ -25,21 +25,21 @@ public class CategoryController {
     private CustomConversionService conversionService;
 
     @PreAuthorize("permitAll")
-    @RequestMapping(value = "/parent", method = RequestMethod.GET)
-    public List<CategoryVO> getParentCategories() {
-        return conversionService.convertAll(categoryService.findParentCategories(), CategoryVO.class);
+    @RequestMapping(value = "/hierarchy", method = RequestMethod.GET)
+    public List<CategoryVO> getHierarchy() {
+        return conversionService.convertAll(categoryService.findCategoryHierarchy(), CategoryVO.class);
     }
 
 //    @PreAuthorize("permitAll")
 //    @RequestMapping(value = "/parent", method = RequestMethod.GET)
 //    public List<Category> addCategory(String name) {
-//        return categoryService.findParentCategories();
+//        return categoryService.findCategoryHierarchy();
 //    }
 //
 //    @PreAuthorize("permitAll")
 //    @RequestMapping(value = "/parent", method = RequestMethod.GET)
 //    public Category addCategory(String name) {
-//        return categoryService.findParentCategories();
+//        return categoryService.findCategoryHierarchy();
 //    }
 
 

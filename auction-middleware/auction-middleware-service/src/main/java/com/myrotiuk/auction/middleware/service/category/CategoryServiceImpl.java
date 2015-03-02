@@ -2,7 +2,6 @@ package com.myrotiuk.auction.middleware.service.category;
 
 import com.myrotiuk.auction.middleware.persistence.repository.CategoryRepository;
 import com.myrotiuk.auction.model.category.Category;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +22,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> findParentCategories() {
-        return categoryRepository.findParentCategories();
+    public List<Category> findCategoryHierarchy() {
+        return categoryRepository.findCategoriesHierarchy();
     }
 
 }

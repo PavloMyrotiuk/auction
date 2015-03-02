@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var auctionApp = angular.module('auctionApp', ['ngResource', 'ngRoute', 'ngCookies'])
+var auctionApp = angular.module('auctionApp', ['ngResource', 'ngRoute', 'ngCookies', 'ui.bootstrap'])
                         .constant('SECURITY', {'AUTH_USER_KEY' : 'user'});
 
 auctionApp.config(function ($routeProvider) {
@@ -28,6 +28,10 @@ auctionApp.config(function ($routeProvider) {
         .when('/add', {
             templateUrl: 'views/add.html',
             controller: 'AddProductController'
+        })
+        .when('/product/:categoryName', {
+            templateUrl: 'views/product.html',
+            controller: 'ProductController'
         })
         .otherwise({
             redirectTo: '/'

@@ -10,6 +10,8 @@
 auctionApp
     .controller('SearchProductController', ['$scope', 'CategoryResource',
         function ($scope, CategoryResource) {
-            $scope.categories = CategoryResource.get();
+            $scope.oneAtATime = true;
+
+            $scope.categories = CategoryResource.getHierarchy();
         }
     ]);

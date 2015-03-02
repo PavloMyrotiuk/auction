@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface CategoryRepositoryCustom {
 
-    List<Category> findParentCategories();
+    List<Category> findCategoriesHierarchy();
 }

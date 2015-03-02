@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * Created by pav on 2/12/15.
  */
-public interface ProductRepository extends MongoRepository<Product, ObjectId> {
+public interface ProductRepository extends MongoRepository<Product, ObjectId>, ProductRepositoryCustom {
 }

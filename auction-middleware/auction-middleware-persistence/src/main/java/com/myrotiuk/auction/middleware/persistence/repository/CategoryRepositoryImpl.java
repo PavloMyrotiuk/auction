@@ -19,9 +19,9 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
     private MongoOperations mongoOperations;
 
     @Override
-    public List<Category> findParentCategories() {
+    public List<Category> findCategoriesHierarchy() {
         Criteria childrenCategoryExists = Criteria.where(Category.KEY.CHILDREN_CATEGORY.toString()).exists(true);
-        Criteria childrenCategoryIsNotEmpty = Criteria.where("$where").is("this.childrenCategories.length>0");
+        Criteria childrenCategoryIsNotEmpty = Criteria.where("$where").is("this."+Category.KEY.CHILDREN_CATEGORY.toString()+".length>0");
         Query query = new Query(new Criteria().andOperator(childrenCategoryExists, childrenCategoryIsNotEmpty));
         return mongoOperations.find(query, Category.class);
     }

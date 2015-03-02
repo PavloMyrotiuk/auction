@@ -13,6 +13,7 @@ public class ProductVO {
     private String title;
     private String description;
     private ProductStatus  productStatus;
+    private String category;
 
     public String getId() {
         return id;
@@ -54,4 +55,11 @@ public class ProductVO {
         this.productStatus = productStatus;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

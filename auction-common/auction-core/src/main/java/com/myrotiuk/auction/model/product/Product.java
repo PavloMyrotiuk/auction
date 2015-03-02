@@ -18,6 +18,31 @@ import java.util.Date;
 @Document(collection = "products")
 public class Product implements BaseEntity<ObjectId> {
 
+
+    public enum KEY {
+        ID("id"),
+        ADDED_DATE("addedDate"),
+        VALID_DATE("validDate"),
+        PRICE("price"),
+        TITLE("title"),
+        DESCRIPTION("description"),
+        PRODUCT_STATUS("productStatus"),
+        CATEGORY("category"),
+        OWNER("owner"),
+        WINNER("winner");
+
+        KEY(String name) {
+            this.keyName = name;
+        }
+
+        private String keyName;
+
+        @Override
+        public String toString() {
+            return this.keyName;
+        }
+    }
+
     @Version
     private int version;
 
@@ -81,13 +106,43 @@ public class Product implements BaseEntity<ObjectId> {
         this.productStatus = productStatus;
     }
 
-    public Category getCategory() {return category; }
+    public Category getCategory() {
+        return category;
+    }
 
-    public void setCategory(Category category) {this.category = category;}
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-    public Date getAddedDate() { return addedDate;}
+    public Date getAddedDate() {
+        return addedDate;
+    }
 
-    public void setAddedDate(Date addedDate) {this.addedDate = addedDate;}
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
 
+    public Date getValidDate() {
+        return validDate;
+    }
 
+    public void setValidDate(Date validDate) {
+        this.validDate = validDate;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public User getWinner() {
+        return winner;
+    }
+
+    public void setWinner(User winner) {
+        this.winner = winner;
+    }
 }
