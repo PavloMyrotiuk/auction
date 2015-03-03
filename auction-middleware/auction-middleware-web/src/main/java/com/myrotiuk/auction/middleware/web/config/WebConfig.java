@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -31,8 +32,8 @@ public class WebConfig extends WebMvcConfigurationSupport {
     }
 
     @Bean
-    public CustomConversionService conversionService() {
-        return (CustomConversionService)customConversionServiceFactoryBean().getObject();
+    public ConversionService conversionService() {
+        return customConversionServiceFactoryBean().getObject();
     }
 
     @Bean

@@ -1,6 +1,7 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
 import com.myrotiuk.auction.middleware.service.product.ProductService;
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.model.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomConversionService conversionService;
+
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ProductVO getById(@PathVariable("id") String id){
         Product product = new Product();
@@ -39,9 +43,8 @@ public class ProductController {
     @PreAuthorize("permitAll")
     @RequestMapping(method = RequestMethod.GET)
     public List<ProductVO> getByProductsTemplate(ProductVO template){
-        List<ProductVO> result = new ArrayList<>();
-        result.add(template);
-        return result;
+        Product product = conversionService.convert(template, Product.class);
+        return conversionService.convertAll(productService.findProducts(product), ProductVO.class);
     }
 
 }

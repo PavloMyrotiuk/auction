@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface CategoryService extends BaseEntityService<Category> {
     List<Category> findCategoryHierarchy();
+
+    Category findByName(String name);
 }

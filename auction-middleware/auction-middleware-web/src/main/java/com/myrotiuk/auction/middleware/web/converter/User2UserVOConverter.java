@@ -13,6 +13,8 @@ public class User2UserVOConverter implements Converter<User, UserVO> {
 
     @Override
     public UserVO convert(User source) {
+        if (source ==null) return null;
+
         UserVO userVO = new UserVO();
         userVO.setName(source.getName());
         userVO.setRoles(source.getRoles());

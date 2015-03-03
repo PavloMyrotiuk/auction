@@ -16,6 +16,8 @@ public class Category2CategoryVOConverter implements Converter<Category, Categor
 
     @Override
     public CategoryVO convert(Category source) {
+        if (source == null ) return null;
+
         CategoryVO result = new CategoryVO();
         result.setId(source.getId().toString());
         result.setName(source.getName());

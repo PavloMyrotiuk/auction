@@ -54,8 +54,7 @@ public class Product implements BaseEntity<ObjectId> {
     private String title;
     private String description;
     private ProductStatus productStatus;
-    @DBRef
-    private Category category;
+    private String category;
     @DBRef
     private User owner;
     @DBRef
@@ -63,10 +62,6 @@ public class Product implements BaseEntity<ObjectId> {
 
     public int getVersion() {
         return version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
     }
 
     @Override
@@ -106,11 +101,11 @@ public class Product implements BaseEntity<ObjectId> {
         this.productStatus = productStatus;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

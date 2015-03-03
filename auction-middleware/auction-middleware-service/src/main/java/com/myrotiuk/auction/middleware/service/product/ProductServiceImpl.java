@@ -3,9 +3,12 @@ package com.myrotiuk.auction.middleware.service.product;
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
 import com.myrotiuk.auction.message.ProductCreatedMessage;
 import com.myrotiuk.auction.middleware.persistence.repository.ProductRepository;
+import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
 import com.myrotiuk.auction.model.product.Product;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +18,7 @@ import java.util.List;
  * Created by pav on 1/31/15.
  */
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl extends BaseEntityServiceImpl<Product> implements ProductService {
 
     @Autowired
     @CreatedProductTemplate
@@ -38,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product create(Product entity) {
-        return productRepository.save(entity);
+    protected MongoRepository<Product, ObjectId> getRepository() {
+        return productRepository;
     }
 }

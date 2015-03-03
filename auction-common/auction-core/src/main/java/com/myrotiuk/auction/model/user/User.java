@@ -3,6 +3,7 @@ package com.myrotiuk.auction.model.user;
 import com.myrotiuk.auction.model.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,7 @@ public class User implements BaseEntity<ObjectId>, UserDetails {
 
     private String name;
 
+    @Indexed(unique = true)
     private String username;
 
     private String password;
