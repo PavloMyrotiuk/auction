@@ -1,21 +1,18 @@
 package com.myrotiuk.auction.middleware.web.vo;
 
-import com.myrotiuk.auction.model.product.ProductStatus;
-
 import java.math.BigDecimal;
-import java.util.Date;
 
 /**
  * Created by pav on 1/29/15.
  */
 public class ProductVO {
     private String id;
-    private Date addedDate;
-    private Date validDate;
+    private String addedDate;
+    private String validDate;
     private BigDecimal price;
     private String title;
     private String description;
-    private ProductStatus  productStatus;
+    private String  productStatus;
     private String category;
     private String userId;
     private String winnerId;
@@ -52,11 +49,11 @@ public class ProductVO {
         this.description = description;
     }
 
-    public ProductStatus getProductStatus() {
+    public String getProductStatus() {
         return productStatus;
     }
 
-    public void setProductStatus(ProductStatus productStatus) {
+    public void setProductStatus(String productStatus) {
         this.productStatus = productStatus;
     }
 
@@ -68,19 +65,19 @@ public class ProductVO {
         this.category = category;
     }
 
-    public Date getAddedDate() {
+    public String getAddedDate() {
         return addedDate;
     }
 
-    public void setAddedDate(Date addedDate) {
+    public void setAddedDate(String addedDate) {
         this.addedDate = addedDate;
     }
 
-    public Date getValidDate() {
+    public String getValidDate() {
         return validDate;
     }
 
-    public void setValidDate(Date validDate) {
+    public void setValidDate(String validDate) {
         this.validDate = validDate;
     }
 

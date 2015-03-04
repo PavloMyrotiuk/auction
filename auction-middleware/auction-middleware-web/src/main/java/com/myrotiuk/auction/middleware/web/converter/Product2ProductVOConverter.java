@@ -22,9 +22,9 @@ public class Product2ProductVOConverter implements Converter<Product, ProductVO>
         result.setCategory(source.getCategory());
 
         result.setPrice(source.getPrice());
-        result.setProductStatus(source.getProductStatus());
-        result.setAddedDate(source.getAddedDate());
-        result.setValidDate(source.getValidDate());
+        result.setProductStatus(source.getProductStatus().toString());
+        result.setAddedDate(""+source.getAddedDate().getTime());
+        result.setValidDate(""+source.getValidDate().getTime());
         result.setUserId(source.getOwner()!=null?source.getOwner().getId().toString():null);
         result.setWinnerId(source.getWinner()!=null?source.getWinner().getId().toString():null);
 

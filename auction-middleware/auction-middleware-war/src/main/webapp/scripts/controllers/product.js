@@ -10,8 +10,18 @@
 auctionApp
     .controller('ProductController', ['$scope', '$routeParams', 'ProductResource',
         function ($scope, $routeParams, ProductResource) {
+
             var product = {
-                category: ''
+                id:'',
+                category: '',
+                addedDate: '',
+                validDate: '',
+                price: '',
+                title:'',
+                description:'',
+                productStatus:'',
+                userId:'',
+                winnerId:''
             }
 
             var categoryName;

@@ -30,7 +30,7 @@ auctionApp.config(function ($routeProvider) {
             controller: 'AddProductController'
         })
         .when('/product/:categoryName', {
-            templateUrl: 'views/product.html',
+            templateUrl: 'views/products.html',
             controller: 'ProductController'
         })
         .otherwise({
