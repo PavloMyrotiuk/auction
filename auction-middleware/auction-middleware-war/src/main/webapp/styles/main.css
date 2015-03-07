@@ -90,6 +90,10 @@ body {
   float: left;
 }
 
+#description{
+  clear:both;
+}
+
 #greeting{
   font-size: x-large;
 }

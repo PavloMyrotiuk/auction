@@ -1,10 +1,10 @@
 package com.myrotiuk.auction.model.product;
 
 import com.myrotiuk.auction.model.BaseEntity;
-import com.myrotiuk.auction.model.category.Category;
 import com.myrotiuk.auction.model.user.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Version;
@@ -44,7 +44,7 @@ public class Product implements BaseEntity<ObjectId> {
     }
 
     @Version
-    private int version;
+    private Long version;
 
     @Id
     private ObjectId id;
@@ -54,19 +54,28 @@ public class Product implements BaseEntity<ObjectId> {
     private String title;
     private String description;
     private ProductStatus productStatus;
+    @Indexed
     private String category;
     @DBRef
     private User owner;
     @DBRef
     private User winner;
 
-    public int getVersion() {
+    public Long getVersion() {
         return version;
     }
 
     @Override
     public ObjectId getId() {
         return id;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public BigDecimal getPrice() {

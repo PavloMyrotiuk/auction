@@ -7,8 +7,8 @@ import java.math.BigDecimal;
  */
 public class ProductVO {
     private String id;
-    private String addedDate;
-    private String validDate;
+    private Long addedDate;
+    private Long validDate;
     private BigDecimal price;
     private String title;
     private String description;
@@ -16,6 +16,7 @@ public class ProductVO {
     private String category;
     private String userId;
     private String winnerId;
+    private Long version;
 
     public String getId() {
         return id;
@@ -65,19 +66,19 @@ public class ProductVO {
         this.category = category;
     }
 
-    public String getAddedDate() {
+    public Long getAddedDate() {
         return addedDate;
     }
 
-    public void setAddedDate(String addedDate) {
+    public void setAddedDate(Long addedDate) {
         this.addedDate = addedDate;
     }
 
-    public String getValidDate() {
+    public Long getValidDate() {
         return validDate;
     }
 
-    public void setValidDate(String validDate) {
+    public void setValidDate(Long validDate) {
         this.validDate = validDate;
     }
 
@@ -95,5 +96,13 @@ public class ProductVO {
 
     public void setWinnerId(String winnerId) {
         this.winnerId = winnerId;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 }

@@ -1,8 +1,8 @@
 dependencies {
-    provided project(':auction-common:auction-core')
+    compile project(':auction-common:auction-core')
 
-    provided "org.springframework:spring-beans:$springVersion@jar"
-    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+    compile "org.springframework:spring-beans:$springVersion@jar"
+    compile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
 
-    provided "org.mongodb:bson:$mongoBsonVersion@jar"
+    compile "org.mongodb:bson:$mongoBsonVersion@jar"
 }

@@ -9,7 +9,9 @@
  * Main module of the application.
  */
 var auctionApp = angular.module('auctionApp', ['ngResource', 'ngRoute', 'ngCookies', 'ui.bootstrap'])
-                        .constant('SECURITY', {'AUTH_USER_KEY' : 'user'});
+                        .constant('SECURITY', {'AUTH_USER_KEY' : 'user'})
+                        .constant('DATE', {'YEAR' : 365, 'FORMAT': 'dd-MMMM-yyyy'})
+                        ;
 
 auctionApp.config(function ($routeProvider) {
     $routeProvider

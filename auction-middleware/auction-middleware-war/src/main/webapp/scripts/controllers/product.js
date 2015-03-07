@@ -29,7 +29,9 @@ auctionApp
                 categoryName = $routeParams.categoryName;
                 product.category = categoryName;
 
-                $scope.products = ProductResource.getByTemplate(product);
+                ProductResource.getByTemplate(product, function (response) {
+                    $scope.products = response;
+                });
             }
         }
     ]);

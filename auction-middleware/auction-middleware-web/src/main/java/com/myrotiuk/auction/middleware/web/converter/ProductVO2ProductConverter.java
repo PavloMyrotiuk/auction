@@ -26,10 +26,12 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
         if (source == null) return null;
 
         Product result = new Product();
-        result.setAddedDate(getValue(source.getAddedDate())!=null?new Date(Integer.parseInt(getValue(source.getAddedDate()))):null);
-        result.setValidDate(getValue(source.getValidDate())!=null?new Date(Integer.parseInt(getValue(source.getValidDate()))):null);
+        result.setId(getValue(source.getId())!=null?new ObjectId(source.getId()):null);
+        result.setVersion(getValue(source.getVersion())!=null?source.getVersion():null);
+        result.setAddedDate(getValue(source.getAddedDate())!=null?new Date(source.getAddedDate()):null);
+        result.setValidDate(getValue(source.getValidDate())!=null?new Date(source.getValidDate()):null);
         result.setCategory(getValue(source.getCategory()));
-        result.setOwner(getValue(source.getUserId()) != null ? userService.findById(new ObjectId(getValue(source.getUserId()))) : null);
+        result.setOwner(getValue(source.getUserId()) != null ? userService.findById(new ObjectId(source.getUserId())) : null);
         result.setDescription(getValue(source.getDescription()));
         result.setPrice(source.getPrice());
         result.setProductStatus(getValue(source.getProductStatus())!=null?ProductStatus.valueOf(source.getProductStatus()):null);
@@ -37,7 +39,7 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
         return result;
     }
 
-    private String getValue(String source) {
+    private <E> E getValue(E source) {
         if (source == null || source == "") {
             return null;
         } else {

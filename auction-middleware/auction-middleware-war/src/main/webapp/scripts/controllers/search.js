@@ -12,6 +12,8 @@ auctionApp
         function ($scope, CategoryResource) {
             $scope.oneAtATime = true;
 
-            $scope.categories = CategoryResource.getHierarchy();
+            CategoryResource.getHierarchy({}, function(response){
+                $scope.categories = response;
+            });
         }
     ]);

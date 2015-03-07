@@ -6,6 +6,7 @@ auctionApp
 
             this.authenticate = function (authenticationResult) {
                 var user = {
+                    userId: authenticationResult.userId,
                     username: authenticationResult.username,
                     name: authenticationResult.name,
                     roles: authenticationResult.roles
@@ -30,6 +31,10 @@ auctionApp
                 var result = $rootScope[SECURITY.AUTH_USER_KEY] !== undefined;
                 return result
             };
+
+            this.getUserId = function(){
+                return $rootScope[SECURITY.AUTH_USER_KEY].userId;
+            }
 
             return this;
         }]);

@@ -1,7 +1,7 @@
 dependencies{
-    provided "org.springframework:spring-context:$springVersion@jar"
-    provided "org.springframework:spring-jms:$springVersion@jar"
-    provided "org.springframework:spring-web:$springVersion@jar"
+    compile "org.springframework:spring-context:$springVersion@jar"
+    compile "org.springframework:spring-jms:$springVersion@jar"
+    compile "org.springframework:spring-web:$springVersion@jar"
 
-    provided "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
+    compile "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
 }

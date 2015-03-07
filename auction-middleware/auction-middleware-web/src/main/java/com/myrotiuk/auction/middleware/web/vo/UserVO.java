@@ -8,6 +8,8 @@ import com.myrotiuk.auction.model.user.UserRole;
  */
 public class UserVO {
 
+    String userId;
+
     String name;
 
     String username;
@@ -36,5 +38,13 @@ public class UserVO {
 
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

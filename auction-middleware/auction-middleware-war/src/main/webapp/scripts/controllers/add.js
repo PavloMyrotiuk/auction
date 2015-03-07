@@ -8,8 +8,71 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('AddProductController', ['$scope',
-        function ($scope) {
+    .controller('AddProductController', ['$scope', 'AuthService', 'CategoryResource', 'ProductResource', 'DATE',
+        function ($scope, AuthService, CategoryResource, ProductResource, DATE) {
+            $scope.product = {
+                category: '',
+                validDate: '',
+                price: '',
+                title: '',
+                description: '',
+                userId: ''
+            };
 
+            function populateDateLogic() {
+                $scope.dateFormat = DATE.FORMAT;
+                $scope.minDate = new Date();
+                var plusYearDate = new Date($scope.minDate);
+                plusYearDate.setDate($scope.minDate.getDate() + DATE.YEAR);
+                $scope.maxDate = plusYearDate;
+            };
+
+            function populateCategories() {
+                CategoryResource.getHierarchy({}, function(response){
+                    var mapCategoryStatus = {};
+                    var r = 0;
+                    for (var i = 0; i < response.length; i++) {
+                        mapCategoryStatus[r++] = {name: response[i].name, disabled: true}
+                        for (var j = 0; j < response[i].childrenCategories.length; j++) {
+                            mapCategoryStatus[r++] = {
+                                name: response[i].childrenCategories[j].name,
+                                disabled: false
+                            }
+                        }
+                    };
+
+                    var _select = $('#selectCategory');
+                    $.each(mapCategoryStatus, function (key, value) {
+                        if (value.disabled) {
+                            _select.append($('<option></option>').val(value.name).html(value.name).attr('disabled', true));
+                        } else {
+                            _select.append($('<option></option>').val(value.name).html( ' &nbsp &nbsp ' + value.name));
+                        }
+                    });
+                });
+
+            };
+
+            $scope.open = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+
+                $scope.opened = true;
+            };
+
+
+            $scope.add = function (product) {
+                (function getTimeFromDate() {
+                    var time = product.validDate.getTime();
+                    product.validDate = time;
+                })();
+                product.userId = AuthService.getUserId();
+
+                ProductResource.post({}, product);
+            }
+
+            populateCategories();
+
+            populateDateLogic();
         }
     ]);

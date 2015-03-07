@@ -1,22 +1,22 @@
 dependencies{
-    provided project(':auction-common:auction-core')
-    provided project(':auction-middleware:auction-middleware-service-api')
+    compile project(':auction-common:auction-core')
+    compile project(':auction-middleware:auction-middleware-service-api')
 
-    provided "org.springframework:spring-context:$springVersion@jar"
-    provided "org.springframework:spring-beans:$springVersion@jar"
-    provided "org.springframework:spring-core:$springVersion@jar"
-    provided "org.springframework:spring-tx:$springVersion@jar"
-    provided "org.springframework:spring-web:$springVersion@jar"
-    provided "org.springframework:spring-webmvc:$springVersion@jar"
+    compile "org.springframework:spring-context:$springVersion@jar"
+    compile "org.springframework:spring-beans:$springVersion@jar"
+    compile "org.springframework:spring-core:$springVersion@jar"
+    compile "org.springframework:spring-tx:$springVersion@jar"
+    compile "org.springframework:spring-web:$springVersion@jar"
+    compile "org.springframework:spring-webmvc:$springVersion@jar"
 
-    provided "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
-    provided "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
+    compile "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
+    compile "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
 
-    provided "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
-    provided "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
-    provided "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
+    compile "org.springframework.security:spring-security-web:$springSecurityVersion@jar"
+    compile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
+    compile "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 
-    provided "org.mongodb:bson:$mongoBsonVersion@jar"
+    compile "org.mongodb:bson:$mongoBsonVersion@jar"
 
     testCompile "junit:junit:$junitVersion@jar"
     testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"

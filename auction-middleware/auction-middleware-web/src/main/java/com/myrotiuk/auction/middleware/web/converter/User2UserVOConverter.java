@@ -16,6 +16,7 @@ public class User2UserVOConverter implements Converter<User, UserVO> {
         if (source ==null) return null;
 
         UserVO userVO = new UserVO();
+        userVO.setUserId(source.getId()!=null?source.getId().toString():null);
         userVO.setName(source.getName());
         userVO.setRoles(source.getRoles());
         userVO.setUsername(source.getUsername());
