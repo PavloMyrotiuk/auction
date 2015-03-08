@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.middleware.persistence.repository;
 
-import com.myrotiuk.auction.model.category.Category;
+import com.myrotiuk.auction.common.core.model.category.Category;
 
 import java.util.List;
 

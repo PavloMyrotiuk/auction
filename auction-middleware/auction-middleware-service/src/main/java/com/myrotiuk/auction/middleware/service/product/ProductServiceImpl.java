@@ -1,13 +1,13 @@
 package com.myrotiuk.auction.middleware.service.product;
 
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
-import com.myrotiuk.auction.message.ProductCreatedMessage;
+import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 import com.myrotiuk.auction.middleware.persistence.repository.ProductRepository;
 import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
-import com.myrotiuk.auction.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.middleware.service.message.MessageFactory;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
@@ -28,11 +28,11 @@ public class ProductServiceImpl extends BaseEntityServiceImpl<Product> implement
     private ProductRepository productRepository;
 
     @Autowired
-    private ConversionService conversionService;
+    private MessageFactory messageFactory;
 
     @Override
     public void sendCreatedProductMessage(Product product) {
-        jmsTemplate.convertAndSend(conversionService.convert(product, ProductCreatedMessage.class));
+        jmsTemplate.convertAndSend(messageFactory.getProductCreatedMessage(product));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.service.category;
 
 import com.myrotiuk.auction.middleware.service.BaseEntityService;
-import com.myrotiuk.auction.model.category.Category;
+import com.myrotiuk.auction.common.core.model.category.Category;
 
 import java.util.List;
 

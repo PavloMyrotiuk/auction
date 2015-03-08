@@ -1,6 +1,6 @@
-package com.myrotiuk.auction.model.user;
+package com.myrotiuk.auction.common.core.model.user;
 
-import com.myrotiuk.auction.model.BaseEntity;
+import com.myrotiuk.auction.common.core.model.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

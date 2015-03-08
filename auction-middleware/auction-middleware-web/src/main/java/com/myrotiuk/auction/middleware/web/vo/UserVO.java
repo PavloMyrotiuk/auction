@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.web.vo;
 
 import java.util.Set;
-import com.myrotiuk.auction.model.user.UserRole;
+import com.myrotiuk.auction.common.core.model.user.UserRole;
 
 /**
  * Created by pav on 2/13/15.

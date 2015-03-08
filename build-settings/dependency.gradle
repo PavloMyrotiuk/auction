@@ -10,10 +10,6 @@ project(':auction-middleware:auction-middleware-war') {
         compile project(':auction-middleware:auction-middleware-service-api')
         compile project(':auction-middleware:auction-middleware-web')
 
-        testCompile "junit:junit:$junitVersion@jar"
-        testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
-//        testCompile "org.springframework:spring-test:$springVersion@jar"
-
         compile "org.springframework:spring-context:$springVersion@jar"
         compile "org.springframework:spring-beans:$springVersion@jar"
         compile "org.springframework:spring-core:$springVersion@jar"
@@ -71,8 +67,6 @@ project(':auction-engine:auction-engine-war') {
         compile project(':auction-engine:auction-engine-service')
         compile project(':auction-engine:auction-engine-service-api')
 
-        testCompile "junit:junit:$junitVersion@jar"
-
         compile "org.springframework:spring-context:$springVersion@jar"
         compile "org.springframework:spring-beans:$springVersion@jar"
         compile "org.springframework:spring-core:$springVersion@jar"
@@ -105,8 +99,6 @@ project(':auction-engine:auction-engine-war') {
         compile "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
         compile "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
         compile "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
-
-
 
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
     }

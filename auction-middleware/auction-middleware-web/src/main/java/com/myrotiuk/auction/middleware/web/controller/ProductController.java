@@ -3,8 +3,8 @@ package com.myrotiuk.auction.middleware.web.controller;
 import com.myrotiuk.auction.middleware.service.product.ProductService;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
-import com.myrotiuk.auction.model.product.Product;
-import com.myrotiuk.auction.model.product.ProductStatus;
+import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.ProductStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,9 +48,10 @@ public class ProductController {
     }
 
     /**
-     * creates product from given value object
+     * Converts ProductVO object into Product object and persist it to the DB.
+     * @param productVO ProductVO.class object
      * */
-    @PreAuthorize("permitAll")
+    @PreAuthorize("ROLE_USER")
     @RequestMapping(method = RequestMethod.POST)
     public void createProduct(@RequestBody ProductVO productVO){
         Product product = conversionService.convert(productVO, Product.class);

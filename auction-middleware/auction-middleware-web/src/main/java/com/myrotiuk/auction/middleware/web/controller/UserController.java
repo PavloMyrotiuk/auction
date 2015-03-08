@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
 import com.myrotiuk.auction.middleware.service.user.UserService;
-import com.myrotiuk.auction.model.user.User;
+import com.myrotiuk.auction.common.core.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.service;
 
 
-import com.myrotiuk.auction.model.BaseEntity;
+import com.myrotiuk.auction.common.core.model.BaseEntity;
 import org.bson.types.ObjectId;
 
 

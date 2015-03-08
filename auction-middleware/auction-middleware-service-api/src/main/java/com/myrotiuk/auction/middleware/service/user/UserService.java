@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.service.user;
 
 import com.myrotiuk.auction.middleware.service.BaseEntityService;
-import com.myrotiuk.auction.model.user.User;
+import com.myrotiuk.auction.common.core.model.user.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**

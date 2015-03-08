@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.message;
+package com.myrotiuk.auction.common.core.message;
 
 import org.bson.types.ObjectId;
 

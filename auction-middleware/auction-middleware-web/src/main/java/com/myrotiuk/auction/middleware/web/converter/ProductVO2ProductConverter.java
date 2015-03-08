@@ -1,10 +1,9 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
-import com.myrotiuk.auction.middleware.service.category.CategoryService;
 import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
-import com.myrotiuk.auction.model.product.Product;
-import com.myrotiuk.auction.model.product.ProductStatus;
+import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.ProductStatus;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -32,6 +31,7 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
         result.setValidDate(getValue(source.getValidDate())!=null?new Date(source.getValidDate()):null);
         result.setCategory(getValue(source.getCategory()));
         result.setOwner(getValue(source.getUserId()) != null ? userService.findById(new ObjectId(source.getUserId())) : null);
+        result.setWinner(getValue(source.getWinnerId()) != null ? userService.findById(new ObjectId(source.getWinnerId())) : null);
         result.setDescription(getValue(source.getDescription()));
         result.setPrice(source.getPrice());
         result.setProductStatus(getValue(source.getProductStatus())!=null?ProductStatus.valueOf(source.getProductStatus()):null);

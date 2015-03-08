@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.model;
+package com.myrotiuk.auction.common.core.model;
 
 import java.io.Serializable;
 

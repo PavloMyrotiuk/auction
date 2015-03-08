@@ -1,6 +1,6 @@
 var users = [
     {
-        "_class": "com.myrotiuk.auction.model.user.User",
+        "_class": "com.myrotiuk.auction.common.core.model.user.User",
         "name": "a",
         "username": "a@a",
         "password": "a",
@@ -9,7 +9,7 @@ var users = [
         ]
     },
     {
-        "_class": "com.myrotiuk.auction.model.user.User",
+        "_class": "com.myrotiuk.auction.common.core.model.user.User",
         "name": "b",
         "username": "b@b",
         "password": "b",

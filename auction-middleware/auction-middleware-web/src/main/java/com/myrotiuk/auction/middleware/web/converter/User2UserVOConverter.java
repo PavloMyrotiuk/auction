@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
-import com.myrotiuk.auction.model.user.User;
+import com.myrotiuk.auction.common.core.model.user.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

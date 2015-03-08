@@ -1,8 +1,11 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
-import com.myrotiuk.auction.model.user.User;
-import com.myrotiuk.auction.model.user.UserRole;
+import com.myrotiuk.auction.common.core.model.user.User;
+import com.myrotiuk.auction.common.core.model.user.UserRole;
+
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 
 import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
@@ -14,15 +17,15 @@ import static org.junit.Assert.*;
 
 public class User2UserVOConverterTest {
 
-    private static User2UserVOConverter user2UserVOConverter;
+    private static User2UserVOConverter converter;
 
     @BeforeClass
-    public static void initConverter() {
-        user2UserVOConverter = new User2UserVOConverter();
+    public static void init() {
+        converter = new User2UserVOConverter();
     }
 
     @Test
-    public void testConvert() throws Exception {
+    public void testConvertValidUserShouldReturnPopulatedValidVO() throws Exception {
         User user = new User();
 
         ObjectId id = ObjectId.get();
@@ -33,10 +36,18 @@ public class User2UserVOConverterTest {
         }});
         user.setUsername("username");
 
-        UserVO userVO = user2UserVOConverter.convert(user);
+        UserVO userVO = converter.convert(user);
         assertEquals(id.toString(), userVO.getUserId());
         assertEquals(user.getName(), userVO.getName());
         assertEquals(user.getUsername(), userVO.getUsername());
         assertTrue(userVO.getRoles().contains(UserRole.ROLE_USER));
+    }
+
+    @Test
+    public void testConvertNullUserShouldReturnNull() {
+    User user = null;
+
+        UserVO  userVO= converter.convert(user);
+        assertThat(userVO, is(nullValue()));
     }
 }

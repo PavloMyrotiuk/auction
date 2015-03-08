@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.logging.aspect.helper;
+package com.myrotiuk.auction.common.logging.aspect.helper;
 
 import org.aspectj.lang.JoinPoint;
 

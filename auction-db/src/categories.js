@@ -1,45 +1,45 @@
 var electronicCategories = [{
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "phone"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "computer"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "tablet"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "laptop"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "camera"
 }
 ];
 var electronic = {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     "name": "electronic",
     "childrenCategories": []
 };
 
 var sportCategories = [{
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "bicycle"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "basketball"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "ski"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "bobsleigh"
 }, {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     name: "surfing"
 }
 ];
 var sport = {
-    "_class": "com.myrotiuk.auction.model.category.Category",
+    "_class": "com.myrotiuk.auction.common.core.model.category.Category",
     "name": "sport",
     "childrenCategories": []
 };

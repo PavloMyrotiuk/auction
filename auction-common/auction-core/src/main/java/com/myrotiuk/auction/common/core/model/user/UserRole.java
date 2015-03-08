@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.model.user;
+package com.myrotiuk.auction.common.core.model.user;
 
 /**
  * Created by pav on 2/21/15.

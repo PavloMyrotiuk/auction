@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.engine.service.product;
 
-import com.myrotiuk.auction.message.ProductCreatedMessage;
+import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 

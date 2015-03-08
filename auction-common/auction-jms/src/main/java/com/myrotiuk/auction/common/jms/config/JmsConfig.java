@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.common.jms.config;
 
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
-import com.myrotiuk.auction.message.ProductCreatedMessage;
+import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Value;

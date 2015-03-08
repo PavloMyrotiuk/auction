@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.middleware.persistence.repository;
 
-import com.myrotiuk.auction.model.category.Category;
+import com.myrotiuk.auction.common.core.model.category.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;

@@ -1,6 +1,6 @@
-package com.myrotiuk.auction.logging.aspect;
+package com.myrotiuk.auction.common.logging.aspect;
 
-import com.myrotiuk.auction.logging.aspect.helper.LoggingAspectHelper;
+import com.myrotiuk.auction.common.logging.aspect.helper.LoggingAspectHelper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;

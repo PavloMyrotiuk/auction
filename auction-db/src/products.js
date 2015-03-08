@@ -1,6 +1,6 @@
 var products = [
         {
-            "_class": "com.myrotiuk.auction.model.product.Product",
+            "_class": "com.myrotiuk.auction.common.core.model.product.Product",
             "version": NumberLong(0),
             "addedDate": ISODate("2014-03-01T00:00:00.000Z"),
             "validDate":ISODate("2015-03-01T00:00:00.000Z"),

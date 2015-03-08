@@ -1,7 +1,7 @@
 package com.myrotiuk.auction.middleware.config;
 
 import com.myrotiuk.auction.common.jms.config.JmsConfig;
-import com.myrotiuk.auction.logging.config.LoggingAspectConfig;
+import com.myrotiuk.auction.common.logging.config.LoggingAspectConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

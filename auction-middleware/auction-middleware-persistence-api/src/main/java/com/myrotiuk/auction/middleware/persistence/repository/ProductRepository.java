@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.middleware.persistence.repository;
 
-import com.myrotiuk.auction.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.Product;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

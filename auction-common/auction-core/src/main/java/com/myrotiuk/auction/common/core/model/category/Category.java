@@ -1,6 +1,6 @@
-package com.myrotiuk.auction.model.category;
+package com.myrotiuk.auction.common.core.model.category;
 
-import com.myrotiuk.auction.model.BaseEntity;
+import com.myrotiuk.auction.common.core.model.BaseEntity;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 //import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -46,6 +46,10 @@ public class Category implements BaseEntity<ObjectId> {
     @Override
     public ObjectId getId() {
         return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public List<Category> getChildrenCategories() {

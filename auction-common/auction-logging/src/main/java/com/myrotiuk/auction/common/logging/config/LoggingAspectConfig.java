@@ -1,4 +1,4 @@
-package com.myrotiuk.auction.logging.config;
+package com.myrotiuk.auction.common.logging.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +9,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"com.myrotiuk.auction.logging.aspect", "com.myrotiuk.auction.logging"})
+@ComponentScan(basePackages = {"com.myrotiuk.auction.common.logging.aspect", "com.myrotiuk.auction.logging"})
 public class LoggingAspectConfig {
 }
