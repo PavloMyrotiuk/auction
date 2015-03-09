@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.middleware.service.category;
 
-import com.myrotiuk.auction.middleware.persistence.repository.CategoryRepository;
+import com.myrotiuk.auction.common.persistence.repository.CategoryRepository;
 import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
 import com.myrotiuk.auction.common.core.model.category.Category;
 import org.bson.types.ObjectId;

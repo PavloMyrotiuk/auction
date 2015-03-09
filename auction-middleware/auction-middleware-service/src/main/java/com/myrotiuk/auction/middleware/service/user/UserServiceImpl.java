@@ -1,6 +1,6 @@
 package com.myrotiuk.auction.middleware.service.user;
 
-import com.myrotiuk.auction.middleware.persistence.repository.UserRepository;
+import com.myrotiuk.auction.common.persistence.repository.UserRepository;
 import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
 import com.myrotiuk.auction.common.core.model.user.User;
 import com.myrotiuk.auction.common.core.model.user.UserRole;

@@ -1,12 +1,11 @@
 rootProject.name = 'auction'
 
 include 'auction-common:auction-core', 'auction-common:auction-logging', 'auction-common:auction-jms'
+include 'auction-common:auction-persistence-api', 'auction-common:auction-persistence'
 
-include 'auction-middleware:auction-middleware-persistence-api', 'auction-middleware:auction-middleware-persistence'
 include 'auction-middleware:auction-middleware-service-api', 'auction-middleware:auction-middleware-service'
 include 'auction-middleware:auction-middleware-web', 'auction-middleware:auction-middleware-war'
 
-include 'auction-engine:auction-engine-persistence-api', 'auction-engine:auction-engine-persistence'
 include 'auction-engine:auction-engine-service-api', 'auction-engine:auction-engine-service'
 include 'auction-engine:auction-engine-war'
 

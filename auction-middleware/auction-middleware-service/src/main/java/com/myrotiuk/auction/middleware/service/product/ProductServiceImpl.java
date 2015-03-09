@@ -1,8 +1,7 @@
 package com.myrotiuk.auction.middleware.service.product;
 
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
-import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
-import com.myrotiuk.auction.middleware.persistence.repository.ProductRepository;
+import com.myrotiuk.auction.common.persistence.repository.ProductRepository;
 import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.middleware.service.message.MessageFactory;
