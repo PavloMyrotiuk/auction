@@ -1,4 +1,4 @@
-<center><h1>Auction application</h1></center>
+<h1>Auction application</h1>
 
 <i>Description:</i>
 <p>This is auction platform, where people can sell and buy different things.

@@ -2,6 +2,8 @@ package com.myrotiuk.auction.middleware.web.converter;
 
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.middleware.web.vo.UserVO;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Product2ProductVOConverter implements Converter<Product, ProductVO> {
+
+    private ConversionService conversionService;
 
     @Override
     public ProductVO convert(Product source) {
@@ -27,9 +31,13 @@ public class Product2ProductVOConverter implements Converter<Product, ProductVO>
         result.setProductStatus(source.getProductStatus()!=null?source.getProductStatus().toString():null);
         result.setAddedDate(source.getAddedDate()!=null?source.getAddedDate().getTime():null);
         result.setValidDate(source.getValidDate()!=null?source.getValidDate().getTime():null);
-        result.setUserId(source.getOwner()!=null?source.getOwner().getId().toString():null);
-        result.setWinnerId(source.getWinner()!=null?source.getWinner().getId().toString():null);
+        result.setUser(source.getOwner() != null ? conversionService.convert(source.getOwner(), UserVO.class) : null);
+        result.setWinner(source.getWinner() != null ? conversionService.convert(source.getWinner(), UserVO.class) : null);
 
         return result;
+    }
+
+    public void setConversionService(ConversionService conversionService) {
+        this.conversionService = conversionService;
     }
 }

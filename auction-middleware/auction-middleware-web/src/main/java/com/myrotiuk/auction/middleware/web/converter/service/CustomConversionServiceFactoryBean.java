@@ -3,6 +3,7 @@ package com.myrotiuk.auction.middleware.web.converter.service;
 import com.myrotiuk.auction.middleware.web.converter.Category2CategoryVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.ProductVO2ProductConverter;
+import com.myrotiuk.auction.middleware.web.converter.String2ObjectIdConverter;
 import com.myrotiuk.auction.middleware.web.converter.User2UserVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import org.springframework.beans.factory.InitializingBean;
@@ -32,6 +33,9 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
     @Autowired
     private User2UserVOConverter user2UserVOConverter;
 
+    @Autowired
+    private String2ObjectIdConverter string2ObjectIdConverter;
+
     @Override
     protected CustomConversionService createConversionService() {
         CustomConversionService customConversionService = new CustomConversionService();
@@ -56,6 +60,7 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
         result.add(productVO2ProductConverter);
         result.add(user2UserVOConverter);
         result.add(category2CategoryVOConverter);
+        result.add(string2ObjectIdConverter);
         return result;
     }
 
@@ -63,5 +68,6 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
     public void afterPropertiesSet() {
         super.afterPropertiesSet();
         category2CategoryVOConverter.setCustomConversionService((CustomConversionService) this.getObject());
+        product2ProductVOConverter.setConversionService(this.getObject());
     }
 }

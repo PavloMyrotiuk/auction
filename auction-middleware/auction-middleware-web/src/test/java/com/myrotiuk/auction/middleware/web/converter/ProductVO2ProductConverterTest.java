@@ -5,6 +5,7 @@ import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.common.core.model.product.ProductStatus;
 import com.myrotiuk.auction.common.core.model.user.User;
+import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -41,6 +42,8 @@ public class ProductVO2ProductConverterTest {
     public void testConvertValidProductVO2ProductShouldReturnValidProductObject(){
         ObjectId id = ObjectId.get();
         User user = new User();
+        UserVO userVO = new UserVO();
+        userVO.setUserId(id.toString());
         Date date = new Date();
 
         user.setId(id);
@@ -56,8 +59,8 @@ public class ProductVO2ProductConverterTest {
         productVO.setProductStatus(ProductStatus.VALID.toString());
         productVO.setTitle("Title");
         productVO.setVersion(Long.valueOf(41));
-        productVO.setUserId(id.toString());
-        productVO.setWinnerId(id.toString());
+        productVO.setUser(userVO);
+        productVO.setWinner(userVO);
 
         Product product = converter.convert(productVO);
 

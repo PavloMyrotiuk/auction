@@ -30,8 +30,8 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
         result.setAddedDate(getValue(source.getAddedDate())!=null?new Date(source.getAddedDate()):null);
         result.setValidDate(getValue(source.getValidDate())!=null?new Date(source.getValidDate()):null);
         result.setCategory(getValue(source.getCategory()));
-        result.setOwner(getValue(source.getUserId()) != null ? userService.findById(new ObjectId(source.getUserId())) : null);
-        result.setWinner(getValue(source.getWinnerId()) != null ? userService.findById(new ObjectId(source.getWinnerId())) : null);
+        result.setOwner(getValue(source.getUser()) != null ? userService.findById(new ObjectId(source.getUser().getUserId())) : null);
+        result.setWinner(getValue(source.getWinner()) != null ? userService.findById(new ObjectId(source.getWinner().getUserId())) : null);
         result.setDescription(getValue(source.getDescription()));
         result.setPrice(source.getPrice());
         result.setProductStatus(getValue(source.getProductStatus())!=null?ProductStatus.valueOf(source.getProductStatus()):null);

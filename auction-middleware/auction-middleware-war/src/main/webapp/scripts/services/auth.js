@@ -28,8 +28,11 @@ auctionApp
             };
 
             this.isAuthenticated = function () {
-                var result = $rootScope[SECURITY.AUTH_USER_KEY] !== undefined;
-                return result
+                var user = $rootScope[SECURITY.AUTH_USER_KEY];
+                if (user !== undefined){
+                    return user.roles.indexOf(SECURITY.AUTH_USER_ROLE)!== -1;
+                }
+                return false;
             };
 
             this.getUserId = function(){

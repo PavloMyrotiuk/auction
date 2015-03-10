@@ -5,6 +5,7 @@ import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionSer
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.common.core.model.product.ProductStatus;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,9 +32,9 @@ public class ProductController {
 
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ProductVO getById(@PathVariable("id") String id){
-        Product product = new Product();
-        productService.sendCreatedProductMessage(product);
-        return new ProductVO();
+        ObjectId objectId = conversionService.convert(id, ObjectId.class);
+        Product product = productService.findById(objectId);
+        return conversionService.convert(product, ProductVO.class);
     }
 
     /**

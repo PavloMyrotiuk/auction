@@ -30,17 +30,5 @@ public class CategoryController {
         return conversionService.convertAll(categoryService.findCategoryHierarchy(), CategoryVO.class);
     }
 
-//    @PreAuthorize("permitAll")
-//    @RequestMapping(value = "/parent", method = RequestMethod.GET)
-//    public List<Category> addCategory(String name) {
-//        return categoryService.findCategoryHierarchy();
-//    }
-//
-//    @PreAuthorize("permitAll")
-//    @RequestMapping(value = "/parent", method = RequestMethod.GET)
-//    public Category addCategory(String name) {
-//        return categoryService.findCategoryHierarchy();
-//    }
-
 
 }

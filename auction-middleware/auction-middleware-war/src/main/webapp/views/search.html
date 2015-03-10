@@ -3,7 +3,7 @@
         <div ng-repeat="category in categories">
             <accordion-group heading="{{category.name}}">
                 <div ng-repeat="child in category.childrenCategories">
-                    <a href="#/product/{{child.name}}">{{child.name}}</a><br>
+                    <a href="#/products/{{child.name}}">{{child.name}}</a><br>
                 </div>
             </accordion-group>
         </div>

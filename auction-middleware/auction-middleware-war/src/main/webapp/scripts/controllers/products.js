@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name auctionApp.controller:ProductController
+ * @name auctionApp.controller:ProductsController
  * @description
- * # ProductController
+ * # ProductsController
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('ProductController', ['$scope', '$routeParams', 'ProductResource',
+    .controller('ProductsController', ['$scope', '$routeParams', 'ProductResource',
         function ($scope, $routeParams, ProductResource) {
 
             var product = {
@@ -25,10 +25,12 @@ auctionApp
                 version: ''
             }
 
-            var id = $routeParams.id;
+            var categoryName = $routeParams.categoryName;
+            product.category = categoryName;
 
-            ProductResource.getById({id: id}, function (response) {
-                $scope.product = response;
+            ProductResource.getByTemplate(product, function (response) {
+                $scope.products = response;
             });
+
         }
     ]);

@@ -14,8 +14,8 @@ public class ProductVO {
     private String description;
     private String  productStatus;
     private String category;
-    private String userId;
-    private String winnerId;
+    private UserVO user;
+    private UserVO winner;
     private Long version;
 
     public String getId() {
@@ -82,20 +82,20 @@ public class ProductVO {
         this.validDate = validDate;
     }
 
-    public String getUserId() {
-        return userId;
+    public UserVO getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(UserVO user) {
+        this.user = user;
     }
 
-    public String getWinnerId() {
-        return winnerId;
+    public UserVO getWinner() {
+        return winner;
     }
 
-    public void setWinnerId(String winnerId) {
-        this.winnerId = winnerId;
+    public void setWinner(UserVO winner) {
+        this.winner = winner;
     }
 
     public Long getVersion() {
