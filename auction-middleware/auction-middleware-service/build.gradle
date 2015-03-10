@@ -12,6 +12,7 @@ dependencies {
     compile project(':auction-common:auction-jms')
     compile project(':auction-middleware:auction-middleware-service-api')
     compile project(':auction-common:auction-persistence-api')
+    compile project(':auction-common:auction-persistence')
 
     compile "org.mongodb:bson:$mongoBsonVersion@jar"
     compile "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
