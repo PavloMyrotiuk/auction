@@ -30,6 +30,7 @@ public class ProductController {
     @Autowired
     private CustomConversionService conversionService;
 
+    @PreAuthorize("permitAll")
     @RequestMapping(value ="/{id}", method = RequestMethod.GET)
     public ProductVO getById(@PathVariable("id") String id){
         ObjectId objectId = conversionService.convert(id, ObjectId.class);

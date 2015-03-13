@@ -1,1 +1,45 @@
-single product with id {{product.id}}
+<div>
+    <div>
+        <div class="col-sm-7 col-md-7"><b>{{product.title}}</b></div>
+        <div id="userInfo" class="col-sm-5 col-md-5">
+            Owner: {{product.user.name}}<br/>
+            {{product.user.username}} <!--user email-->
+        </div>
+    </div>
+    <div>{{product.description}}</div>
+    <div>
+        <div class="col-sm-6 col-md-6">
+            <div class="col-sm-4 col-md-4"><i>Added:</i></div>
+            <div class="col-sm-8 col-md-8"><i>{{product.addedDate| date:'yyyy-MM-dd'}}</i></div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="col-sm-4 col-md-4"><i>Valid until:</i></div>
+            <div class="col-sm-8 col-md-8"><i>{{product.validDate | date:'yyyy-MM-dd'}}</i></div>
+        </div>
+    </div>
+    <div>
+        <div class="col-sm-4 col-md-4"><b>Price:</b></div>
+        <div class="col-sm-8 col-md-8"><b>{{product.price| currency}}</b></div>
+    </div>
+    <div id="betForm">
+        <div class="form-group" ng-if="canBet()">
+            <form class="form-horizontal" ng-submit="bet(betAmount)" name="betForm">
+                <label for="inputAmount" class="col-md-2 col-sm-2 control-label">Amount:</label>
+
+                <div class="col-md-6 col-sm-6">
+                    <input type="number" class="form-control" id="inputAmount" placeholder="Bet size"
+                           ng-model="betAmount"
+                           required="" min="{{minBet}}">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-usd"></span> Bet
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div ng-if="!canBet()">
+            <i>Auction is ended.</i>
+        </div>
+    </div>
+
+</div>

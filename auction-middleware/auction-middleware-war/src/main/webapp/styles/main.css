@@ -97,3 +97,14 @@ body {
 #greeting{
   font-size: x-large;
 }
+
+#betForm{
+  margin-top: 70px;
+}
+
+#userInfo{
+border: 1px solid #e7e7e7;
+  padding: 10px 40px;
+  background: #f8f8f8;
+  border-radius: 25px;
+}

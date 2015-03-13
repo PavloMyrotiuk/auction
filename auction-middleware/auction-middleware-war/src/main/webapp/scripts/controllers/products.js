@@ -20,8 +20,6 @@ auctionApp
                 title: '',
                 description: '',
                 productStatus: '',
-                userId: '',
-                winnerId: '',
                 version: ''
             }
 
