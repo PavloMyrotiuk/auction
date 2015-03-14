@@ -1,6 +1,7 @@
 package com.myrotiuk.auction.common.core.model.product;
 
 import com.myrotiuk.auction.common.core.model.BaseEntity;
+import com.myrotiuk.auction.common.core.model.bet.Bet;
 import com.myrotiuk.auction.common.core.model.user.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by pav on 1/29/15.
@@ -29,7 +31,8 @@ public class Product implements BaseEntity<ObjectId> {
         PRODUCT_STATUS("productStatus"),
         CATEGORY("category"),
         OWNER("owner"),
-        WINNER("winner");
+        WINNER("winner"),
+        BET("bets");
 
         KEY(String name) {
             this.keyName = name;
@@ -60,6 +63,9 @@ public class Product implements BaseEntity<ObjectId> {
     private User owner;
     @DBRef
     private User winner;
+
+    @DBRef
+    private List<Bet> bets;
 
     public Long getVersion() {
         return version;
@@ -148,5 +154,17 @@ public class Product implements BaseEntity<ObjectId> {
 
     public void setWinner(User winner) {
         this.winner = winner;
+    }
+
+    public List<Bet> getBets() {
+        return bets;
+    }
+
+    public void setBets(List<Bet> bets) {
+        this.bets = bets;
+    }
+
+    public void addBet(Bet bet){
+        this.bets.add(bet);
     }
 }

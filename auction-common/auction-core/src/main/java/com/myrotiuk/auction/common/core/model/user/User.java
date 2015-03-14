@@ -25,7 +25,7 @@ public class User implements BaseEntity<ObjectId>, UserDetails {
 
     private String name;
 
-    @Indexed(unique = true)
+    @Indexed(unique = true, sparse = true)
     private String username;
 
     private String password;

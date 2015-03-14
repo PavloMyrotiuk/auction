@@ -9,7 +9,7 @@ project(':auction-middleware:auction-middleware-war') {
 
     war {
         archiveName "auction-middleware.war"
-        from ("src/main/resource"){include 'log4j2.xml' into 'WEB-INF/classes'}
+        from ("src/main/resources"){include 'log4j2.xml' into 'WEB-INF/classes'}
     }
 
 }
@@ -19,6 +19,6 @@ project(':auction-engine:auction-engine-war') {
 
     war {
         archiveName "auction-engine.war"
-        from ("src/main/resource") {include 'log4j2.xml' into 'WEB-INF/classes'}
+        from ("src/main/resources") {include 'log4j2.xml' into 'WEB-INF/classes'}
     }
 }

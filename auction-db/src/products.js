@@ -13,7 +13,8 @@ var products = [
             "the iPhone 4.",
             "productStatus": "VALID",
             "category": "phone",
-            "owner": {"$ref": "users", "$id": db.users.findOne({name: "a"})._id}
+            "owner": {"$ref": "users", "$id": db.users.findOne({name: "a"})._id},
+            "bets": [ ]
         }
     ];
 

@@ -1,5 +1,6 @@
 package com.myrotiuk.auction.engine.service.product;
 
+import com.myrotiuk.auction.common.core.message.BetMessage;
 import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 
 /**
@@ -8,4 +9,6 @@ import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 public interface ProductService {
 
     void readNewProductCreatedMessage(ProductCreatedMessage message);
+
+    void readBetMessage(BetMessage betMessage);
 }

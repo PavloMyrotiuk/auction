@@ -30,9 +30,6 @@ public class ProductVO2ProductConverterTest {
     @InjectMocks
     private static ProductVO2ProductConverter converter;
 
-    @Mock
-    private UserService userService;
-
     @BeforeClass
     public static void init(){
         converter = new ProductVO2ProductConverter();
@@ -41,13 +38,8 @@ public class ProductVO2ProductConverterTest {
     @Test
     public void testConvertValidProductVO2ProductShouldReturnValidProductObject(){
         ObjectId id = ObjectId.get();
-        User user = new User();
-        UserVO userVO = new UserVO();
-        userVO.setUserId(id.toString());
         Date date = new Date();
 
-        user.setId(id);
-        when(userService.findById(id)).thenReturn(user);
 
         ProductVO productVO= new ProductVO();
         productVO.setId(id.toString());
@@ -59,16 +51,12 @@ public class ProductVO2ProductConverterTest {
         productVO.setProductStatus(ProductStatus.VALID.toString());
         productVO.setTitle("Title");
         productVO.setVersion(Long.valueOf(41));
-        productVO.setUser(userVO);
-        productVO.setWinner(userVO);
 
         Product product = converter.convert(productVO);
 
         assertEquals(id, product.getId());
         assertEquals(date, product.getAddedDate());
         assertEquals(date, product.getValidDate());
-        assertEquals(user, product.getOwner());
-        assertEquals(user, product.getWinner());
         assertEquals(Long.valueOf(41), product.getVersion());
         assertEquals("simple description", product.getDescription());
         assertEquals(BigDecimal.TEN, product.getPrice());
@@ -76,7 +64,6 @@ public class ProductVO2ProductConverterTest {
         assertEquals("Title", product.getTitle());
         assertEquals("phone", product.getCategory());
 
-        verify(userService, times(2)).findById(id);
     }
 
     @Test

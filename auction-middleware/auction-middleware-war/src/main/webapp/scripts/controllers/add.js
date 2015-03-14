@@ -8,8 +8,8 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('AddProductController', ['$scope', 'AuthService', 'CategoryResource', 'ProductResource', 'DATE',
-        function ($scope, AuthService, CategoryResource, ProductResource, DATE) {
+    .controller('AddProductController', ['$scope', '$location', 'AuthService', 'CategoryResource', 'ProductResource', 'DATE',
+        function ($scope, $location, AuthService, CategoryResource, ProductResource, DATE) {
             $scope.product = {
                 category: '',
                 validDate: '',
@@ -68,7 +68,11 @@ auctionApp
                 })();
                 product.userId = AuthService.getUserId();
 
-                ProductResource.post({}, product);
+                ProductResource.post({}, product, function(response){
+                    var product = response;
+                    var productId = product.id;
+                    $location.path('/product/' + productId);
+                });
             }
 
             populateCategories();

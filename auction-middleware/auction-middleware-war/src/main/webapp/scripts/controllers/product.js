@@ -8,8 +8,8 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('ProductController', ['$scope', '$routeParams', 'ProductResource',
-        function ($scope, $routeParams, ProductResource) {
+    .controller('ProductController', ['$scope', '$routeParams', 'ProductResource', 'BetResource',
+        function ($scope, $routeParams, ProductResource, BetResource) {
             var betStep = 1;
 
             var product = {
@@ -35,7 +35,13 @@ auctionApp
             }
 
             $scope.bet = function(betAmount){
-                console.log(product.id, betAmount);
+                var betVO = {
+                    amount: betAmount,
+                    productId: $scope.product.id,
+                    productVersion: $scope.product.version
+                };
+
+                BetResource.bet(betVO);
             }
 
             ProductResource.getById({id: id}, function (response) {

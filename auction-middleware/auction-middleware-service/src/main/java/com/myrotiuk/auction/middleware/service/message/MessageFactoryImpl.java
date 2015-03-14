@@ -1,7 +1,11 @@
 package com.myrotiuk.auction.middleware.service.message;
 
+import com.myrotiuk.auction.common.core.message.BetMessage;
+import com.myrotiuk.auction.common.core.message.MessageType;
 import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
+import com.myrotiuk.auction.common.core.model.bet.Bet;
 import com.myrotiuk.auction.common.core.model.product.Product;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +18,16 @@ public class MessageFactoryImpl implements MessageFactory {
     public ProductCreatedMessage getProductCreatedMessage(Product product) {
         ProductCreatedMessage result = new ProductCreatedMessage();
         result.setProductId(product.getId());
+        result.setMessageType(MessageType.PRODUCT_CREATED);
+        return result;
+    }
+
+    @Override
+    public BetMessage getBetMessage(Bet bet, ObjectId productId) {
+        BetMessage result = new BetMessage();
+        result.setUserId(bet.getUser().getId());
+        result.setBetAmount(bet.getAmount());
+        result.setMessageType(MessageType.BET);
         return result;
     }
 }

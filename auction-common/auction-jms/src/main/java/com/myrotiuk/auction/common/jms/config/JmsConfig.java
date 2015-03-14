@@ -1,5 +1,6 @@
 package com.myrotiuk.auction.common.jms.config;
 
+import com.myrotiuk.auction.common.jms.annotation.BetQueueTemplate;
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
 import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -32,6 +33,9 @@ public class JmsConfig {
     @Value("${jms.queue.CreatedProductQueue}")
     private String createdProductQueue;
 
+    @Value("${jms.queue.BetQueue}")
+    private String betQueue;
+
     @Bean
     public ActiveMQConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory result = new ActiveMQConnectionFactory();
@@ -45,6 +49,16 @@ public class JmsConfig {
         JmsTemplate result = new JmsTemplate();
         result.setConnectionFactory(cachingConnectionFactory());
         result.setDefaultDestination(createdProductQueue());
+        result.setMessageConverter(getJacksonMessageConverter());
+        return result;
+    }
+
+    @Bean
+    @BetQueueTemplate
+    public JmsTemplate betQueueTemplate() {
+        JmsTemplate result = new JmsTemplate();
+        result.setConnectionFactory(cachingConnectionFactory());
+        result.setDefaultDestination(betQueue());
         result.setMessageConverter(getJacksonMessageConverter());
         return result;
     }
@@ -74,6 +88,11 @@ public class JmsConfig {
     @Bean
     public ActiveMQQueue createdProductQueue(){
         return new ActiveMQQueue(createdProductQueue);
+    }
+
+    @Bean
+    public ActiveMQQueue betQueue(){
+        return new ActiveMQQueue(betQueue);
     }
 
     @Bean

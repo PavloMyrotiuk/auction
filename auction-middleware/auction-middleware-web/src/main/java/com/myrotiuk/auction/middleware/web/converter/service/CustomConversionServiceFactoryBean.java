@@ -1,5 +1,6 @@
 package com.myrotiuk.auction.middleware.web.converter.service;
 
+import com.myrotiuk.auction.middleware.web.converter.BetVO2BetConverter;
 import com.myrotiuk.auction.middleware.web.converter.Category2CategoryVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.ProductVO2ProductConverter;
@@ -36,6 +37,9 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
     @Autowired
     private String2ObjectIdConverter string2ObjectIdConverter;
 
+    @Autowired
+    private BetVO2BetConverter betVO2BetConverter;
+
     @Override
     protected CustomConversionService createConversionService() {
         CustomConversionService customConversionService = new CustomConversionService();
@@ -61,6 +65,7 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
         result.add(user2UserVOConverter);
         result.add(category2CategoryVOConverter);
         result.add(string2ObjectIdConverter);
+        result.add(betVO2BetConverter);
         return result;
     }
 

@@ -1,5 +1,7 @@
 package com.myrotiuk.auction.middleware.service.product;
 
+import com.myrotiuk.auction.common.core.model.bet.Bet;
+import com.myrotiuk.auction.common.jms.annotation.BetQueueTemplate;
 import com.myrotiuk.auction.common.jms.annotation.CreatedProductTemplate;
 import com.myrotiuk.auction.common.persistence.repository.ProductRepository;
 import com.myrotiuk.auction.middleware.service.BaseEntityServiceImpl;
@@ -21,7 +23,11 @@ public class ProductServiceImpl extends BaseEntityServiceImpl<Product> implement
 
     @Autowired
     @CreatedProductTemplate
-    private JmsTemplate jmsTemplate;
+    private JmsTemplate createProductTemplate;
+
+    @Autowired
+    @BetQueueTemplate
+    private JmsTemplate betQueueTemplate;
 
     @Autowired
     private ProductRepository productRepository;
@@ -31,7 +37,12 @@ public class ProductServiceImpl extends BaseEntityServiceImpl<Product> implement
 
     @Override
     public void sendCreatedProductMessage(Product product) {
-        jmsTemplate.convertAndSend(messageFactory.getProductCreatedMessage(product));
+        createProductTemplate.convertAndSend(messageFactory.getProductCreatedMessage(product));
+    }
+
+    @Override
+    public void sendBetProductMessage(Bet bet, ObjectId productId) {
+        betQueueTemplate.convertAndSend(messageFactory.getBetMessage(bet, productId));
     }
 
     @Override

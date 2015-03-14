@@ -5,7 +5,8 @@ import org.bson.types.ObjectId;
 /**
  * Created by pav on 1/30/15.
  */
-public class ProductCreatedMessage {
+public class ProductCreatedMessage extends BaseMessage{
+
     private ObjectId productId;
 
     public ObjectId getProductId() {

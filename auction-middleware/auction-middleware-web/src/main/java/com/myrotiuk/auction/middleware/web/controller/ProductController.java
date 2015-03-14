@@ -1,6 +1,8 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
+import com.myrotiuk.auction.common.core.model.user.User;
 import com.myrotiuk.auction.middleware.service.product.ProductService;
+import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
@@ -8,6 +10,7 @@ import com.myrotiuk.auction.common.core.model.product.ProductStatus;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private CustomConversionService conversionService;
@@ -53,17 +59,21 @@ public class ProductController {
      * Converts ProductVO object into Product object and persist it to the DB.
      * @param productVO ProductVO.class object
      * */
-    @PreAuthorize("ROLE_USER")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(method = RequestMethod.POST)
-    public void createProduct(@RequestBody ProductVO productVO){
+    public ProductVO createProduct(@RequestBody ProductVO productVO){
         Product product = conversionService.convert(productVO, Product.class);
         populateProductWithNewProductData(product);
-        productService.create(product);
+        Product persisted = productService.create(product);
+        return conversionService.convert(persisted, ProductVO.class);
     }
 
     private void populateProductWithNewProductData(Product product) {
         product.setAddedDate(new Date());
         product.setProductStatus(ProductStatus.VALID);
+        String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) userService.loadUserByUsername(username);
+        product.setOwner(user);
     }
 
 }

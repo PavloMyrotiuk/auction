@@ -14,7 +14,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
  */
 @Configuration
 @Import({JmsConfig.class, LoggingAspectConfig.class})
-@PropertySource(value = {"/WEB-INF/jms.properties"})
+@PropertySource(value = {"classpath:jms.properties"})
 @ComponentScan(basePackages = {"com.myrotiuk.auction.middleware.service","com.myrotiuk.auction.middleware"})
 public class MiddlewareConfig {
 
