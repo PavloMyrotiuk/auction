@@ -1,6 +1,10 @@
 <div>
     <div>
-        <div class="col-sm-7 col-md-7"><b>{{product.title}}</b></div>
+        <div>
+            <div class="col-sm-7 col-md-7" ng-if="!isEnded()"><b>{{product.title}}</b></div>
+            <div class="col-sm-7 col-md-7" ng-if="isEnded()"><b>{{product.title}} [Auction is ended!]</b></div>
+        </div>
+
         <div id="userInfo" class="col-sm-5 col-md-5">
             Owner: {{product.user.name}}<br/>
             {{product.user.username}} <!--user email-->
@@ -37,9 +41,8 @@
                 </div>
             </form>
         </div>
-        <div ng-if="!canBet()">
-            <i>Auction is ended.</i>
-        </div>
     </div>
-
+    <div ng-repeat="bet in product.bets">
+        {{bet.user.name}} <i> / {{bet.user.username}} / </i> bet {{bet.amount}}
+    </div>
 </div>

@@ -14,6 +14,14 @@ public class Bet {
     private User user;
     private BigDecimal amount;
 
+    public Bet(User user, BigDecimal amount) {
+        this.user = user;
+        this.amount = amount;
+    }
+
+    public Bet() {
+    }
+
     public User getUser() {
         return user;
     }

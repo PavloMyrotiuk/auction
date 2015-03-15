@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
@@ -25,6 +26,7 @@ import java.util.Map;
 @EnableJms
 @Configuration
 @ComponentScan(basePackages = {"com.myrotiuk.auction.common.jms.annotation","com.myrotiuk.auction.common.jms"})
+@PropertySource(value = {"classpath:jms.properties"})
 public class JmsConfig {
 
     @Value("${jms.broker.url}")

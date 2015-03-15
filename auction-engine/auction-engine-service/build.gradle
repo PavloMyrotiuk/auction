@@ -9,6 +9,9 @@ dependencies {
     compile project(':auction-common:auction-core')
     compile project(':auction-common:auction-jms')
     compile project(':auction-engine:auction-engine-service-api')
+    compile project(':auction-common:auction-persistence')
+    compile project(':auction-common:auction-persistence-api')
 
+    compile "org.mongodb:bson:$mongoBsonVersion@jar"
 
 }

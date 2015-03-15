@@ -7,7 +7,6 @@ import java.math.BigDecimal;
  */
 public class BetVO {
     private String productId;
-    private Long productVersion;
     private BigDecimal amount;
 
     public String getProductId() {
@@ -26,11 +25,4 @@ public class BetVO {
         this.amount = amount;
     }
 
-    public Long getProductVersion() {
-        return productVersion;
-    }
-
-    public void setProductVersion(Long productVersion) {
-        this.productVersion = productVersion;
-    }
 }

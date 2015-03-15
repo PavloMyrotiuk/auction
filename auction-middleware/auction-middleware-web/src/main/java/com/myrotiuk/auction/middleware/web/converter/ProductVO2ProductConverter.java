@@ -7,7 +7,6 @@ import org.bson.types.ObjectId;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -30,7 +29,6 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
         result.setPrice(source.getPrice());
         result.setProductStatus(getValue(source.getProductStatus())!=null?ProductStatus.valueOf(source.getProductStatus()):null);
         result.setTitle(getValue(source.getTitle()));
-        result.setBets(new ArrayList<>());
         return result;
     }
 

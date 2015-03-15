@@ -17,7 +17,7 @@ public class MessageFactoryImpl implements MessageFactory {
     @Override
     public ProductCreatedMessage getProductCreatedMessage(Product product) {
         ProductCreatedMessage result = new ProductCreatedMessage();
-        result.setProductId(product.getId());
+        result.setProductId(product.getId().toString());
         result.setMessageType(MessageType.PRODUCT_CREATED);
         return result;
     }
@@ -25,8 +25,9 @@ public class MessageFactoryImpl implements MessageFactory {
     @Override
     public BetMessage getBetMessage(Bet bet, ObjectId productId) {
         BetMessage result = new BetMessage();
-        result.setUserId(bet.getUser().getId());
+        result.setUserId(bet.getUser().getId().toString());
         result.setBetAmount(bet.getAmount());
+        result.setProductId(productId.toString());
         result.setMessageType(MessageType.BET);
         return result;
     }

@@ -1,7 +1,11 @@
 package com.myrotiuk.auction.engine.service.product;
 
+import com.myrotiuk.auction.common.core.message.BaseMessage;
 import com.myrotiuk.auction.common.core.message.BetMessage;
 import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
+import com.myrotiuk.auction.engine.service.message.MessageProcessor;
+import com.myrotiuk.auction.engine.service.message.MessageProcessorFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +15,24 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    @Autowired
+    private MessageProcessorFactory processorFactory;
+
     @Override
-    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.CreatedProductQueue}" )
+    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.CreatedProductQueue}")
     public void readNewProductCreatedMessage(ProductCreatedMessage message) {
-        System.out.println(message);
+        processMessage(message);
     }
 
     @Override
-    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.BetQueue}" )
-    public void readBetMessage(BetMessage betMessage) {
-        System.out.println(betMessage);
+    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.BetQueue}")
+    public void readBetMessage(BetMessage message) {
+        processMessage(message);
+    }
+
+    private void processMessage(BaseMessage message) {
+        MessageProcessor messageProcessor = processorFactory.getMessageProcessor(message);
+        messageProcessor.process(message);
     }
 }
 

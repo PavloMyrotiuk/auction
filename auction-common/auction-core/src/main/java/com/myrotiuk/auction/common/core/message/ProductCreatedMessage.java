@@ -1,19 +1,17 @@
 package com.myrotiuk.auction.common.core.message;
 
-import org.bson.types.ObjectId;
-
 /**
  * Created by pav on 1/30/15.
  */
 public class ProductCreatedMessage extends BaseMessage{
 
-    private ObjectId productId;
+    private String productId;
 
-    public ObjectId getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(ObjectId productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 }

@@ -1,7 +1,5 @@
 package com.myrotiuk.auction.common.core.message;
 
-import org.bson.types.ObjectId;
-
 import java.math.BigDecimal;
 
 /**
@@ -10,25 +8,17 @@ import java.math.BigDecimal;
 public class BetMessage extends BaseMessage{
 
 
-    private ObjectId productId;
+    private String productId;
 
-    private ObjectId userId;
+    private String userId;
 
     private BigDecimal betAmount;
 
-    public ObjectId getProductId() {
-        return productId;
-    }
-
-    public void setProductId(ObjectId productId) {
-        this.productId = productId;
-    }
-
-    public ObjectId getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(ObjectId userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -38,5 +28,13 @@ public class BetMessage extends BaseMessage{
 
     public void setBetAmount(BigDecimal betAmount) {
         this.betAmount = betAmount;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

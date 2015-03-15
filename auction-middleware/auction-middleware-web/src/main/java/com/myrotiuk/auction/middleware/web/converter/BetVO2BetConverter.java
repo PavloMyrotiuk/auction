@@ -19,32 +19,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class BetVO2BetConverter implements Converter<BetVO, Bet> {
 
-    private String optimisticExceptionMessage = "Incompatible version.";
-
-    @Autowired
-    private ProductService productService;
-
     @Autowired
     private UserService userService;
 
     @Override
     public Bet convert(BetVO source) {
+        if (source == null) return null;
+
         Bet result = new Bet();
         result.setAmount(source.getAmount());
         result.setUser(getUser());
-        Product product = productService.findById(new ObjectId(source.getProductId()));
-        checkProductVersion(source, product);
         return result;
     }
 
     private User getUser() {
         String username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (User) userService.loadUserByUsername(username);
-    }
-
-    private void checkProductVersion(BetVO source, Product product) {
-        if (product.getVersion() != source.getProductVersion()) {
-            throw new OptimisticLockingFailureException(optimisticExceptionMessage);
-        }
     }
 }

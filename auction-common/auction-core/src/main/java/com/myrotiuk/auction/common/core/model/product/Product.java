@@ -64,7 +64,6 @@ public class Product implements BaseEntity<ObjectId> {
     @DBRef
     private User winner;
 
-    @DBRef
     private List<Bet> bets;
 
     public Long getVersion() {

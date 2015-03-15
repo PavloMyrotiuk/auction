@@ -1,9 +1,10 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.vo.BetVO;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
-import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Product2ProductVOConverter implements Converter<Product, ProductVO> {
 
-    private ConversionService conversionService;
+    private CustomConversionService conversionService;
 
     @Override
     public ProductVO convert(Product source) {
@@ -33,11 +34,11 @@ public class Product2ProductVOConverter implements Converter<Product, ProductVO>
         result.setValidDate(source.getValidDate()!=null?source.getValidDate().getTime():null);
         result.setUser(source.getOwner() != null ? conversionService.convert(source.getOwner(), UserVO.class) : null);
         result.setWinner(source.getWinner() != null ? conversionService.convert(source.getWinner(), UserVO.class) : null);
-
+        result.setBets(source.getBets());
         return result;
     }
 
-    public void setConversionService(ConversionService conversionService) {
+    public void setConversionService(CustomConversionService conversionService) {
         this.conversionService = conversionService;
     }
 }

@@ -1,6 +1,9 @@
 package com.myrotiuk.auction.middleware.web.vo;
 
+import com.myrotiuk.auction.common.core.model.bet.Bet;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by pav on 1/29/15.
@@ -17,6 +20,7 @@ public class ProductVO {
     private UserVO user;
     private UserVO winner;
     private Long version;
+    private List<Bet> bets;
 
     public String getId() {
         return id;
@@ -104,5 +108,13 @@ public class ProductVO {
 
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public List<Bet> getBets() {
+        return bets;
+    }
+
+    public void setBets(List<Bet> bets) {
+        this.bets = bets;
     }
 }

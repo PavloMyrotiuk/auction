@@ -6,13 +6,11 @@ import com.myrotiuk.auction.middleware.web.converter.Product2ProductVOConverter;
 import com.myrotiuk.auction.middleware.web.converter.ProductVO2ProductConverter;
 import com.myrotiuk.auction.middleware.web.converter.String2ObjectIdConverter;
 import com.myrotiuk.auction.middleware.web.converter.User2UserVOConverter;
-import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -73,6 +71,6 @@ public class CustomConversionServiceFactoryBean extends ConversionServiceFactory
     public void afterPropertiesSet() {
         super.afterPropertiesSet();
         category2CategoryVOConverter.setCustomConversionService((CustomConversionService) this.getObject());
-        product2ProductVOConverter.setConversionService(this.getObject());
+        product2ProductVOConverter.setConversionService((CustomConversionService) this.getObject());
     }
 }

@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @EnableMongoRepositories(basePackages = {"com.myrotiuk.auction.common.persistence.repository"})
 @ComponentScan(basePackages = {"com.myrotiuk.auction.common.persistence.repository"})
-@PropertySource(value = {"/WEB-INF/db.properties"})
+@PropertySource(value = {"classpath:db.properties"})
 public class PersistenceConfig {
 
     @Value("${mongo.dbName}")
