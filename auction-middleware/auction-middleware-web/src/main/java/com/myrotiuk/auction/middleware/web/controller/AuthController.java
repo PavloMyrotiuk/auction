@@ -37,23 +37,24 @@ public class AuthController {
     /**
      * Authenticates a user and creates an authentication token.
      *
-     * @param username
-     *            The name of the user.
-     * @param password
-     *            The password of the user.
+     * @param username The name of the user.
+     * @param password The password of the user.
      * @return Authentication token.
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @PreAuthorize("permitAll")
-    public UserVO authenticate(@FormParam("username") String username, @FormParam("password") String password) {
+    public UserVO authenticate(@FormParam("username") String username, @FormParam("password") String password, HttpServletRequest request) {
 
+        int sessionValid = request.getSession().getMaxInactiveInterval(); //seconds
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetails userDetails = userService.loadUserByUsername(username);
-        return conversionService.convert(userDetails, UserVO.class);
+        UserVO result = conversionService.convert(userDetails, UserVO.class);
+        result.setValidDate(System.currentTimeMillis() + sessionValid * 1000);
+        return result;
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)

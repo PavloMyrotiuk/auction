@@ -9,15 +9,18 @@ auctionApp
                     userId: authenticationResult.userId,
                     username: authenticationResult.username,
                     name: authenticationResult.name,
-                    roles: authenticationResult.roles
+                    roles: authenticationResult.roles,
+                    validDate: authenticationResult.validDate
                 }
                 $rootScope[SECURITY.AUTH_USER_KEY] = user;
                 $cookieStore.put(SECURITY.AUTH_USER_KEY, user);
             };
 
             this.init = function () {
-                if ($rootScope[SECURITY.AUTH_USER_KEY] === undefined) {
-                    $rootScope[SECURITY.AUTH_USER_KEY] = $cookieStore.get(SECURITY.AUTH_USER_KEY);
+                var userIsNotInRootScope = $rootScope[SECURITY.AUTH_USER_KEY] === undefined;
+                var userInCookies = $cookieStore.get(SECURITY.AUTH_USER_KEY);
+                if (userIsNotInRootScope && userInCookies && userInCookies.validDate > new Date().getTime()) {
+                    $rootScope[SECURITY.AUTH_USER_KEY] = userInCookies;
                 }
                 ;
             };

@@ -1,6 +1,7 @@
 package com.myrotiuk.auction.middleware.web.vo;
 
 import java.util.Set;
+
 import com.myrotiuk.auction.common.core.model.user.UserRole;
 
 /**
@@ -8,13 +9,15 @@ import com.myrotiuk.auction.common.core.model.user.UserRole;
  */
 public class UserVO {
 
-    String userId;
+    private String userId;
 
-    String name;
+    private String name;
 
-    String username;
+    private String username;
 
-    Set<UserRole> roles;
+    private Set<UserRole> roles;
+
+    private Long validDate;
 
     public String getName() {
         return name;
@@ -46,5 +49,13 @@ public class UserVO {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public Long getValidDate() {
+        return validDate;
+    }
+
+    public void setValidDate(Long validDate) {
+        this.validDate = validDate;
     }
 }
