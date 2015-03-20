@@ -6,7 +6,6 @@ import com.myrotiuk.auction.common.core.message.ProductCreatedMessage;
 import com.myrotiuk.auction.engine.service.message.MessageProcessor;
 import com.myrotiuk.auction.engine.service.message.MessageProcessorFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,13 +18,11 @@ public class ProductServiceImpl implements ProductService {
     private MessageProcessorFactory processorFactory;
 
     @Override
-    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.CreatedProductQueue}")
     public void readNewProductCreatedMessage(ProductCreatedMessage message) {
         processMessage(message);
     }
 
     @Override
-    @JmsListener(containerFactory = "messageListenerContainerFactory", destination = "${jms.queue.BetQueue}")
     public void readBetMessage(BetMessage message) {
         processMessage(message);
     }

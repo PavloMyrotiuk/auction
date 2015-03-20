@@ -50,13 +50,19 @@ auctionApp
                     productVersion: $scope.product.version
                 };
 
-                BetResource.bet(betVO);
+                BetResource.bet(betVO, function(){
+                    bootbox.alert("Your bet is taken and will be processed." );
+                });
             };
 
             ProductResource.getById({id: id}, function (response) {
-                $scope.product = response;
-                $scope.betAmount = $scope.product.price + betStep;
-                $scope.minBet = $scope.product.price + betStep;
+                initializeModelData(response);
             });
+
+            function initializeModelData(response) {
+                $scope.product = response;
+                $scope.betAmount = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep || $scope.product.price + betStep;
+                $scope.minBet = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep || $scope.product.price + betStep;
+            };
         }
     ]);

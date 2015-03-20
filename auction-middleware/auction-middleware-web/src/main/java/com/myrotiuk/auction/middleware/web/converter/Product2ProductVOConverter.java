@@ -1,7 +1,6 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
-import com.myrotiuk.auction.middleware.web.vo.BetVO;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;

@@ -46,6 +46,13 @@ public class ProductServiceImpl extends BaseEntityServiceImpl<Product> implement
     }
 
     @Override
+    public Product create(Product entity) {
+        Product product = super.create(entity);
+        sendCreatedProductMessage(product);
+        return product;
+    }
+
+    @Override
     public List<Product> findProducts(Product template) {
         return productRepository.findProducts(template);
     }

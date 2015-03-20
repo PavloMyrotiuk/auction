@@ -6,10 +6,12 @@ import com.myrotiuk.auction.middleware.web.vo.BetVO;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -27,10 +29,9 @@ public class BetController {
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void betForProduct(@RequestBody BetVO betVO) {
         Bet bet = conversionService.convert(betVO, Bet.class);
         productService.sendBetProductMessage(bet, new ObjectId(betVO.getProductId()));
     }
-
-
 }

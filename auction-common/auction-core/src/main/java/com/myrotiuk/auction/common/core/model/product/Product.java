@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -164,6 +165,7 @@ public class Product implements BaseEntity<ObjectId> {
     }
 
     public void addBet(Bet bet){
+        if (bets == null ) bets = new ArrayList<>();
         this.bets.add(bet);
     }
 }

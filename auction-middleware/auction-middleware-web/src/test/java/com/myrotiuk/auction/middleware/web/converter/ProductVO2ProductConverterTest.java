@@ -1,17 +1,13 @@
 package com.myrotiuk.auction.middleware.web.converter;
 
-import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.vo.ProductVO;
 import com.myrotiuk.auction.common.core.model.product.Product;
 import com.myrotiuk.auction.common.core.model.product.ProductStatus;
-import com.myrotiuk.auction.common.core.model.user.User;
-import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.bson.types.ObjectId;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
@@ -20,14 +16,10 @@ import java.util.Date;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductVO2ProductConverterTest {
 
-    @InjectMocks
     private static ProductVO2ProductConverter converter;
 
     @BeforeClass
