@@ -28,7 +28,7 @@ auctionApp
             };
 
             function populateCategories() {
-                CategoryResource.getHierarchy({}, function(response){
+                CategoryResource.getHierarchy({}, function (response) {
                     var mapCategoryStatus = {};
                     var r = 0;
                     for (var i = 0; i < response.length; i++) {
@@ -39,14 +39,15 @@ auctionApp
                                 disabled: false
                             }
                         }
-                    };
+                    }
+                    ;
 
                     var _select = $('#selectCategory');
                     $.each(mapCategoryStatus, function (key, value) {
                         if (value.disabled) {
                             _select.append($('<option></option>').val(value.name).html(value.name).attr('disabled', true));
                         } else {
-                            _select.append($('<option></option>').val(value.name).html( ' &nbsp &nbsp ' + value.name));
+                            _select.append($('<option></option>').val(value.name).html(' &nbsp &nbsp ' + value.name));
                         }
                     });
                 });
@@ -60,19 +61,36 @@ auctionApp
                 $scope.opened = true;
             };
 
+            function valid(product) {
+                if (!product.validDate ||
+                    typeof product.price !== "number") {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+
 
             $scope.add = function (product) {
                 (function getTimeFromDate() {
                     var time = Date.parse(product.validDate);
-                    product.validDate = time;
+                    if (typeof time === "number" && !isNaN(time)) {
+                        product.validDate = time;
+                    }else{
+                        product.validDate = "";
+                    }
                 })();
-                product.userId = AuthService.getUserId();
+                if (valid(product)) {
+                    product.userId = AuthService.getUserId();
 
-                ProductResource.post({}, product, function(response){
-                    var product = response;
-                    var productId = product.id;
-                    $location.path('/product/' + productId);
-                });
+                    ProductResource.post({}, product, function (response) {
+                        var product = response;
+                        var productId = product.id;
+                        $location.path('/product/' + productId);
+                    });
+                } else {
+                    bootbox.alert("Please check input data and try again.");
+                }
             }
 
             populateCategories();

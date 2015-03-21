@@ -61,8 +61,13 @@ auctionApp
 
             function initializeModelData(response) {
                 $scope.product = response;
-                $scope.betAmount = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep || $scope.product.price + betStep;
-                $scope.minBet = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep || $scope.product.price + betStep;
+                if ($scope.product.bets){
+                    $scope.betAmount = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep;
+                    $scope.minBet = $scope.product.bets[$scope.product.bets.length - 1].amount + betStep;
+                }else{
+                    $scope.betAmount =$scope.product.price + betStep;
+                    $scope.minBet =$scope.product.price + betStep;
+                }
             };
         }
     ]);
