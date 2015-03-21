@@ -63,7 +63,7 @@ auctionApp
 
             $scope.add = function (product) {
                 (function getTimeFromDate() {
-                    var time = product.validDate.getTime();
+                    var time = Date.parse(product.validDate);
                     product.validDate = time;
                 })();
                 product.userId = AuthService.getUserId();
