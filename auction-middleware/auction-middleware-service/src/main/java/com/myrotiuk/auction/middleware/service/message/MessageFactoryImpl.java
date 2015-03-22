@@ -19,6 +19,7 @@ public class MessageFactoryImpl implements MessageFactory {
         ProductCreatedMessage result = new ProductCreatedMessage();
         result.setProductId(product.getId().toString());
         result.setMessageType(MessageType.PRODUCT_CREATED);
+        result.setValidDate(product.getValidDate().getTime());
         return result;
     }
 

@@ -19,5 +19,6 @@ allprojects {
         springSecurityVersion='3.2.5.RELEASE'
         javaxWsRsApiVersion='2.0.1'
         commonsBeanUtilsVersion='1.9.2'
+        quartzVersion='2.2.1'
     }
 }

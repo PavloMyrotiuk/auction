@@ -1,10 +1,14 @@
 package com.myrotiuk.auction.common.persistence.repository;
 
 import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.ProductStatus;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -48,5 +52,12 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
         return criteria;
     }
 
-
+    @Override
+    public Product updateProductStatus(ObjectId id, ProductStatus status) {
+        String idKey = Product.KEY.ID.toString();
+        Query query = new Query(Criteria.where(idKey).is(id));
+        Update update = new Update();
+        update.set(Product.KEY.PRODUCT_STATUS.toString(), status);
+       return mongoOperations.findAndModify(query, update,new FindAndModifyOptions().returnNew(true), Product.class);
+    }
 }

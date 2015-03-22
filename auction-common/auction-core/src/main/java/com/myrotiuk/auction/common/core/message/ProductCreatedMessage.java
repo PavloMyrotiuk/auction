@@ -7,11 +7,21 @@ public class ProductCreatedMessage extends BaseMessage{
 
     private String productId;
 
+    private Long validDate;
+
     public String getProductId() {
         return productId;
     }
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public Long getValidDate() {
+        return validDate;
+    }
+
+    public void setValidDate(Long validDate) {
+        this.validDate = validDate;
     }
 }

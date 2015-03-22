@@ -1,8 +1,11 @@
 dependencies {
     compile "org.springframework:spring-context:$springVersion@jar"
+    compile "org.springframework:spring-context-support:$springVersion@jar"
     compile "org.springframework:spring-beans:$springVersion@jar"
     compile "org.springframework:spring-core:$springVersion@jar"
     compile "org.springframework:spring-jms:$springVersion@jar"
+
+    compile "org.quartz-scheduler:quartz:$quartzVersion@jar"
 
     compile "org.apache.activemq:activemq-core:$activemqcoreVersion"
 

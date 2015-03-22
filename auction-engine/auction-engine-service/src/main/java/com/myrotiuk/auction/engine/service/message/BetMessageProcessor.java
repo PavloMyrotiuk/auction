@@ -3,6 +3,7 @@ package com.myrotiuk.auction.engine.service.message;
 import com.myrotiuk.auction.common.core.message.BetMessage;
 import com.myrotiuk.auction.common.core.model.bet.Bet;
 import com.myrotiuk.auction.common.core.model.product.Product;
+import com.myrotiuk.auction.common.core.model.product.ProductStatus;
 import com.myrotiuk.auction.common.core.model.user.User;
 import com.myrotiuk.auction.common.persistence.repository.ProductRepository;
 import com.myrotiuk.auction.common.persistence.repository.UserRepository;
@@ -29,7 +30,9 @@ public class BetMessageProcessor implements MessageProcessor<BetMessage> {
         Product product = productRepository.findOne(new ObjectId(message.getProductId()));
         User user = userRepository.findOne(new ObjectId(message.getUserId()));
         Bet bet = new Bet(user, message.getBetAmount());
-        product.addBet(bet);
-        productRepository.save(product);
+        if (product.getProductStatus()!= ProductStatus.EXPIRED) {
+            product.addBet(bet);
+            productRepository.save(product);
+        }
     }
 }
