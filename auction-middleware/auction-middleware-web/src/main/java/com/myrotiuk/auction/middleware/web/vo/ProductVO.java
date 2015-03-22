@@ -15,11 +15,10 @@ public class ProductVO {
     private BigDecimal price;
     private String title;
     private String description;
-    private String  productStatus;
+    private String productStatus;
     private String category;
     private UserVO user;
     private UserVO winner;
-    private Long version;
     private List<Bet> bets;
 
     public String getId() {
@@ -100,14 +99,6 @@ public class ProductVO {
 
     public void setWinner(UserVO winner) {
         this.winner = winner;
-    }
-
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
     }
 
     public List<Bet> getBets() {

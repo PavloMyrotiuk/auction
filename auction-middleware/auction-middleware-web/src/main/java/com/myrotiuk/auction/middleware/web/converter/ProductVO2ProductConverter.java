@@ -21,7 +21,6 @@ public class ProductVO2ProductConverter implements Converter<ProductVO, Product>
 
         Product result = new Product();
         result.setId(getValue(source.getId())!=null?new ObjectId(source.getId()):null);
-        result.setVersion(getValue(source.getVersion())!=null?source.getVersion():null);
         result.setAddedDate(getValue(source.getAddedDate())!=null?new Date(source.getAddedDate()):null);
         result.setValidDate(getValue(source.getValidDate())!=null?new Date(source.getValidDate()):null);
         result.setCategory(getValue(source.getCategory()));

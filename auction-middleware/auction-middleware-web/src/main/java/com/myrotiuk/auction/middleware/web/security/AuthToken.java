@@ -18,10 +18,6 @@ public class AuthToken {
         this.user = user;
     }
 
-    public Long getValidDate() {
-        return validDate;
-    }
-
     public void setValidDate(Long validDate) {
         this.validDate = validDate;
     }

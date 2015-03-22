@@ -42,14 +42,12 @@ public class ProductVO2ProductConverterTest {
         productVO.setPrice(BigDecimal.TEN);
         productVO.setProductStatus(ProductStatus.VALID.toString());
         productVO.setTitle("Title");
-        productVO.setVersion(Long.valueOf(41));
 
         Product product = converter.convert(productVO);
 
         assertEquals(id, product.getId());
         assertEquals(date, product.getAddedDate());
         assertEquals(date, product.getValidDate());
-        assertEquals(Long.valueOf(41), product.getVersion());
         assertEquals("simple description", product.getDescription());
         assertEquals(BigDecimal.TEN, product.getPrice());
         assertEquals(ProductStatus.VALID, product.getProductStatus());

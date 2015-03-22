@@ -61,7 +61,6 @@ public class Product2ProductVOConverterTest {
         product.setPrice(BigDecimal.TEN);
         product.setProductStatus(ProductStatus.VALID);
         product.setTitle("Title");
-        product.setVersion(Long.valueOf(41));
         product.setOwner(user);
         product.setWinner(user);
         product.setBets(bets);
@@ -73,7 +72,6 @@ public class Product2ProductVOConverterTest {
         assertEquals(userVO, productVO.getUser());
         assertEquals(userVO, productVO.getWinner());
         verify(conversionService, times(2)).convert(user, UserVO.class);
-        assertEquals(Long.valueOf(41),productVO.getVersion());
         assertEquals("simple description", productVO.getDescription());
         assertEquals(BigDecimal.TEN, productVO.getPrice());
         assertEquals(ProductStatus.VALID.toString(), productVO.getProductStatus());

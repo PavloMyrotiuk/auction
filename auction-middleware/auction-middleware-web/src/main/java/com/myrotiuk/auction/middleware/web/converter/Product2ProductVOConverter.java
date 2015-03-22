@@ -22,7 +22,6 @@ public class Product2ProductVOConverter implements Converter<Product, ProductVO>
         ProductVO result = new ProductVO();
 
         result.setId(source.getId()!=null? source.getId().toString():null);
-        result.setVersion(source.getVersion());
         result.setTitle(source.getTitle());
         result.setDescription(source.getDescription());
         result.setCategory(source.getCategory());
