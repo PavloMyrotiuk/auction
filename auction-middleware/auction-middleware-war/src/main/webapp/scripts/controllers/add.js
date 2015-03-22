@@ -21,10 +21,6 @@ auctionApp
 
             function populateDateLogic() {
                 $scope.dateFormat = DATE.FORMAT;
-                $scope.minDate = new Date();
-                var plusYearDate = new Date($scope.minDate);
-                plusYearDate.setDate($scope.minDate.getDate() + DATE.YEAR);
-                $scope.maxDate = plusYearDate;
             };
 
             function populateCategories() {
@@ -63,27 +59,30 @@ auctionApp
 
             function valid(product) {
                 if (!product.validDate ||
-                    typeof product.price !== "number") {
+                    typeof product.price !== "number" ||
+                    isNaN(Date.parse(product.validDate)) ||
+                    Date.parse(product.validDate) < new Date() ||
+                    product.price < 0) {
                     return false;
                 } else {
                     return true;
                 }
             }
 
+            function getProductVO(product) {
+                var productVO = {};
+                productVO.category = product.category;
+                productVO.validDate = Date.parse(product.validDate);
+                productVO.price = product.price;
+                productVO.title = product.title;
+                productVO.description = product.description;
+                return productVO;
+            }
+
 
             $scope.add = function (product) {
-                (function getTimeFromDate() {
-                    var time = Date.parse(product.validDate);
-                    if (typeof time === "number" && !isNaN(time)) {
-                        product.validDate = time;
-                    }else{
-                        product.validDate = "";
-                    }
-                })();
                 if (valid(product)) {
-                    product.userId = AuthService.getUserId();
-
-                    ProductResource.post({}, product, function (response) {
+                    ProductResource.post({}, getProductVO(product), function (response) {
                         var product = response;
                         var productId = product.id;
                         $location.path('/product/' + productId);
