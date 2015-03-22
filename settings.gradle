@@ -9,5 +9,3 @@ include 'auction-middleware:auction-middleware-web', 'auction-middleware:auction
 include 'auction-engine:auction-engine-service-api', 'auction-engine:auction-engine-service'
 include 'auction-engine:auction-engine-war'
 
-include 'auction-db'
-

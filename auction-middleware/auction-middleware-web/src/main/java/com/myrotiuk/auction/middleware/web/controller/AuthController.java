@@ -6,6 +6,7 @@ import javax.ws.rs.FormParam;
 
 import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.security.AuthToken;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -43,7 +44,7 @@ public class AuthController {
      */
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @PreAuthorize("permitAll")
-    public UserVO authenticate(@FormParam("username") String username, @FormParam("password") String password, HttpServletRequest request) {
+    public AuthToken authenticate(@FormParam("username") String username, @FormParam("password") String password, HttpServletRequest request) {
 
         int sessionValid = request.getSession().getMaxInactiveInterval(); //seconds
         UsernamePasswordAuthenticationToken authenticationToken =
@@ -52,9 +53,16 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         UserDetails userDetails = userService.loadUserByUsername(username);
-        UserVO result = conversionService.convert(userDetails, UserVO.class);
-        result.setValidDate(System.currentTimeMillis() + sessionValid * 1000);
-        return result;
+        UserVO user = conversionService.convert(userDetails, UserVO.class);
+
+        return getAuthToken(sessionValid, user);
+    }
+
+    private AuthToken getAuthToken(int sessionValid, UserVO user) {
+        AuthToken token = new AuthToken();
+        token.setUser(user);
+        token.setValidDate(System.currentTimeMillis() + sessionValid * 1000);
+        return token;
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)

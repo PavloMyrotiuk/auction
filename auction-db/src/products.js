@@ -2,8 +2,8 @@ var products = [
         {
             "_class": "com.myrotiuk.auction.common.core.model.product.Product",
             "version": NumberLong(0),
-            "addedDate": ISODate("2014-03-01T00:00:00.000Z"),
-            "validDate":ISODate("2015-03-01T00:00:00.000Z"),
+            "addedDate": ISODate("2015-03-01T00:00:00.000Z"),
+            "validDate":ISODate("2015-12-01T00:00:00.000Z"),
             "price": "300.99",
             "title": "Brand new iPhone 5C",
             "description": "It is one of two successors to the iPhone 5 and one of two predecessors to the iPhone 6," +

@@ -8,13 +8,13 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('HeaderController', ['$scope', '$rootScope', '$location', 'AuthResource',  'AuthService',
-        function ($scope, $rootScope, $location, AuthResource,  AuthService) {
+    .controller('HeaderController', ['$scope', '$rootScope', '$location', 'AuthResource',  'AuthService', 'SECURITY',
+        function ($scope, $rootScope, $location, AuthResource,  AuthService, SECURITY) {
             AuthService.init();
 
             $scope.isAuthenticated = function () {
                 var result = AuthService.isAuthenticated();
-                if (result) $scope.user = $rootScope.user.name;
+                if (result) $scope.user = $rootScope[SECURITY.AUTH_TOKEN_KEY].name;
                 return result
             };
 

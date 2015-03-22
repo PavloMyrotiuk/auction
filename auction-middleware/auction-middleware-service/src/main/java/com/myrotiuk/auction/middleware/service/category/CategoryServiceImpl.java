@@ -25,11 +25,6 @@ public class CategoryServiceImpl extends BaseEntityServiceImpl<Category> impleme
     }
 
     @Override
-    public Category findByName(String name) {
-        return categoryRepository.findByName(name);
-    }
-
-    @Override
     protected MongoRepository<Category, ObjectId> getRepository() {
         return categoryRepository;
     }

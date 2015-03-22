@@ -17,8 +17,6 @@ public class UserVO {
 
     private Set<UserRole> roles;
 
-    private Long validDate;
-
     public String getName() {
         return name;
     }
@@ -49,13 +47,5 @@ public class UserVO {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public Long getValidDate() {
-        return validDate;
-    }
-
-    public void setValidDate(Long validDate) {
-        this.validDate = validDate;
     }
 }

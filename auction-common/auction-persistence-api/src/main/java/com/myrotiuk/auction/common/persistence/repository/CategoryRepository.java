@@ -9,6 +9,4 @@ import com.myrotiuk.auction.common.core.model.category.Category;
  * Created by pav on 2/12/15.
  */
 public interface CategoryRepository  extends MongoRepository<Category, ObjectId>, CategoryRepositoryCustom {
-
-    Category findByName(String name);
 }

@@ -8,8 +8,8 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('AddProductController', ['$scope', '$location', 'AuthService', 'CategoryResource', 'ProductResource', 'DATE',
-        function ($scope, $location, AuthService, CategoryResource, ProductResource, DATE) {
+    .controller('AddProductController', ['$scope', '$location', 'AuthService', 'CategoryResource', 'ProductResource',
+        function ($scope, $location, AuthService, CategoryResource, ProductResource) {
             $scope.product = {
                 category: '',
                 validDate: '',
