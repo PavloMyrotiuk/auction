@@ -19,10 +19,6 @@ auctionApp
                 userId: ''
             };
 
-            function populateDateLogic() {
-                $scope.dateFormat = DATE.FORMAT;
-            };
-
             function populateCategories() {
                 CategoryResource.getHierarchy({}, function (response) {
                     var mapCategoryStatus = {};
@@ -93,7 +89,5 @@ auctionApp
             }
 
             populateCategories();
-
-            populateDateLogic();
         }
     ]);
