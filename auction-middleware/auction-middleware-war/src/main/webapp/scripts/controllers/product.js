@@ -23,7 +23,6 @@ auctionApp
                 productStatus: '',
                 user: '',
                 winner: '',
-                version: '',
                 bets:''
             };
 

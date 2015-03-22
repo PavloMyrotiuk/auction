@@ -19,8 +19,7 @@ auctionApp
                 price: '',
                 title: '',
                 description: '',
-                productStatus: '',
-                version: ''
+                productStatus: ''
             }
 
             var categoryName = $routeParams.categoryName;
