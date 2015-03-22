@@ -53,16 +53,40 @@ auctionApp
                 $scope.opened = true;
             };
 
-            function valid(product) {
-                if (!product.validDate ||
-                    typeof product.price !== "number" ||
+            function isWrongInputData(product) {
+                return !product.validDate ||
                     isNaN(Date.parse(product.validDate)) ||
-                    Date.parse(product.validDate) < new Date() ||
-                    product.price < 0) {
+                    Date.parse(product.validDate) < new Date().getTime();
+            }
+
+            function isWrongInputPrice(product){
+               return product.price <0;
+            }
+
+            function valid(product) {
+                if (isWrongInputData(product)||isWrongInputPrice(product)) {
                     return false;
                 } else {
                     return true;
                 }
+            }
+
+            function getErrors(product){
+            var errors=[];
+                if(isWrongInputData(product)){
+                    errors.push("You should enter valid date(Please use date picker). " +
+                    "Input date/time should be bigger than now.");
+                };
+
+                if(isWrongInputPrice(product)){
+                    errors.push("Product price cannot be less than 0.");
+                };
+
+                return errors;
+            }
+            function clearWrongInput(product){
+                if(isWrongInputPrice(product)){product.price = ''}
+                if(isWrongInputData(product)){product.validDate = ''}
             }
 
             function getProductVO(product) {
@@ -84,7 +108,8 @@ auctionApp
                         $location.path('/product/' + productId);
                     });
                 } else {
-                    bootbox.alert("Please check input data and try again.");
+                    bootbox.alert("Please check input data and try again. " + getErrors(product).toString());
+                    clearWrongInput(product);
                 }
             }
 
