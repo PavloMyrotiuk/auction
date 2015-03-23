@@ -20,5 +20,7 @@ allprojects {
         javaxWsRsApiVersion='2.0.1'
         commonsBeanUtilsVersion='1.9.2'
         quartzVersion='2.2.1'
+        powerMockVersion='1.6.2'
+        javassistVersion='3.12.1.GA'
     }
 }

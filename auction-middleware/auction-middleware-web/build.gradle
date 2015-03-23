@@ -21,5 +21,12 @@ dependencies{
     testCompile "junit:junit:$junitVersion@jar"
     testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
     testCompile "org.mockito:mockito-all:$mockitoVersion@jar"
+    testCompile "org.powermock:powermock-core:$powerMockVersion@jar"
+    testCompile "org.powermock:powermock-reflect:$powerMockVersion@jar"
+    testCompile "org.powermock:powermock-module-junit4:$powerMockVersion@jar"
+    testCompile "org.powermock:powermock-api-mockito:$powerMockVersion@jar"
+    testCompile "org.powermock:powermock-api-support:$powerMockVersion@jar"
+    testCompile "org.powermock:powermock-module-junit4-common:$powerMockVersion@jar"
+    testCompile "javassist:javassist:$javassistVersion@jar"
 
 }
