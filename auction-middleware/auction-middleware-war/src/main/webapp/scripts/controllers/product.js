@@ -8,8 +8,8 @@
  * Controller of the auctionApp
  */
 auctionApp
-    .controller('ProductController', ['$scope','$rootScope', '$routeParams', 'ProductResource', 'BetResource',
-        function ($scope,$rootScope, $routeParams, ProductResource, BetResource) {
+    .controller('ProductController', ['$scope','$rootScope', '$routeParams', 'ProductResource', 'BetResource', 'SECURITY',
+        function ($scope,$rootScope, $routeParams, ProductResource, BetResource, SECURITY) {
             var betStep = 1;
 
             var product = {
@@ -31,7 +31,7 @@ auctionApp
             $scope.canBet = function(){
                 if ($scope.product) {
                     var expired = new Date() > $scope.product.validDate;
-                    var differentOwner = $scope.product.user.userId !== $rootScope.user.userId;
+                    var differentOwner = $scope.product.user.userId !== $rootScope[SECURITY.AUTH_TOKEN_KEY].userId;
                     return !expired && differentOwner;
                 }
             };

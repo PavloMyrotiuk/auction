@@ -21,4 +21,8 @@ public class AuthToken {
     public void setValidDate(Long validDate) {
         this.validDate = validDate;
     }
+
+    public Long getValidDate() {
+        return validDate;
+    }
 }

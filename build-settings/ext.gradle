@@ -22,5 +22,8 @@ allprojects {
         quartzVersion='2.2.1'
         powerMockVersion='1.6.2'
         javassistVersion='3.12.1.GA'
+        aopallianceVersion='1.0'
+        jsonassertVersion='1.2.3'
+        jsonVersion='20141113'
     }
 }
