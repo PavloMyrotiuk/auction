@@ -31,6 +31,7 @@ dependencies{
     testCompile "org.powermock:powermock-api-mockito:$powerMockVersion@jar"
     testCompile "org.powermock:powermock-api-support:$powerMockVersion@jar"
     testCompile "org.powermock:powermock-module-junit4-common:$powerMockVersion@jar"
+
     testCompile "javassist:javassist:$javassistVersion@jar"
     testCompile "commons-logging:commons-logging:$commonsloggingVersion@jar"
     testCompile "com.fasterxml.jackson.core:jackson-databind:$jackson2Version@jar"

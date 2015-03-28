@@ -21,7 +21,6 @@ project(':auction-middleware:auction-middleware-war') {
         compile "org.springframework:spring-expression:$springVersion@jar"
         compile "org.springframework:spring-messaging:$springVersion@jar"
         compile "org.springframework:spring-jms:$springVersion@jar"
-        testCompile "org.springframework:spring-test:$springVersion@jar"
 
         compile "org.aspectj:aspectjrt:$aspectjVersion@jar"
         compile "org.aspectj:aspectjweaver:$aspectjVersion@jar"
@@ -42,7 +41,6 @@ project(':auction-middleware:auction-middleware-war') {
         compile "org.mongodb:mongo-java-driver:$mongoJavaDriverVersion@jar"
         compile "org.mongodb:bson:$mongoBsonVersion@jar"
         compile "org.springframework.data:spring-data-mongodb:$springDataMongoDbVersion@jar"
-//        compile "org.springframework.data:spring-data-commons-core:$springDataCommonsCoreVersion@jar"
         compile "org.springframework.data:spring-data-commons:$springDataCommonsVersion@jar"
 
 
@@ -50,22 +48,9 @@ project(':auction-middleware:auction-middleware-war') {
         compile "org.springframework.security:spring-security-core:$springSecurityVersion@jar"
         compile "org.springframework.security:spring-security-config:$springSecurityVersion@jar"
 
-//        compile "commons-beanutils:commons-beanutils:$commonsBeanUtilsVersion@jar"
-
         compile "javax.ws.rs:javax.ws.rs-api:$javaxWsRsApiVersion@jar"
 
         providedRuntime "javax.servlet:javax.servlet-api:$servletapiVersion@jar"
-
-        testCompile "junit:junit:$junitVersion@jar"
-        testCompile "org.hamcrest:hamcrest-all:$hamcrestVersion@jar"
-        testCompile "org.mockito:mockito-all:$mockitoVersion@jar"
-        testCompile "org.powermock:powermock-core:$powerMockVersion@jar"
-        testCompile "org.powermock:powermock-reflect:$powerMockVersion@jar"
-        testCompile "org.powermock:powermock-module-junit4:$powerMockVersion@jar"
-        testCompile "org.powermock:powermock-api-mockito:$powerMockVersion@jar"
-        testCompile "org.powermock:powermock-api-support:$powerMockVersion@jar"
-        testCompile "org.powermock:powermock-module-junit4-common:$powerMockVersion@jar"
-        testCompile "javassist:javassist:$javassistVersion@jar"
     }
 }
 

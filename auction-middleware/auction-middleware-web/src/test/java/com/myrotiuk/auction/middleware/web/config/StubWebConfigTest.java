@@ -4,9 +4,13 @@ import com.myrotiuk.auction.middleware.service.category.CategoryService;
 import com.myrotiuk.auction.middleware.service.product.ProductService;
 import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionServiceFactoryBean;
+import com.myrotiuk.auction.middleware.web.security.config.SecurityConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -15,7 +19,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  */
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.myrotiuk.auction.middleware.web.controller"})
+@Import({SecurityConfig.class})
+@ComponentScan(basePackages = {"com.myrotiuk.auction.middleware.web.controller"
+                               ,"com.myrotiuk.auction.middleware.web.converter"
+                               , "com.myrotiuk.auction.middleware.web.converter.service"})
 public class StubWebConfigTest {
 
     @Bean
@@ -34,13 +41,13 @@ public class StubWebConfigTest {
     }
 
     @Bean
-    public CustomConversionService conversionService(){
-        return null;
+    public ConversionService conversionService() {
+        return customConversionServiceFactoryBean().getObject();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(){
-        return null;
+    public CustomConversionServiceFactoryBean customConversionServiceFactoryBean(){
+        return new CustomConversionServiceFactoryBean();
     }
 
 
