@@ -3,7 +3,6 @@ package com.myrotiuk.auction.middleware.web.controller;
 import com.myrotiuk.auction.common.core.model.user.User;
 import com.myrotiuk.auction.common.core.model.user.UserRole;
 import com.myrotiuk.auction.middleware.service.user.UserService;
-import com.myrotiuk.auction.middleware.web.config.StubWebConfigTest;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.bson.types.ObjectId;
@@ -21,7 +20,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -37,7 +35,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(PowerMockRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {StubWebConfigTest.class})
 @PrepareForTest({SecurityContextHolder.class})
 public class AuthControllerTest {
 
