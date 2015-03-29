@@ -1,9 +1,11 @@
 package com.myrotiuk.auction.middleware.web.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myrotiuk.auction.common.core.model.user.User;
 import com.myrotiuk.auction.common.core.model.user.UserRole;
 import com.myrotiuk.auction.middleware.service.user.UserService;
 import com.myrotiuk.auction.middleware.web.converter.service.CustomConversionService;
+import com.myrotiuk.auction.middleware.web.security.AuthToken;
 import com.myrotiuk.auction.middleware.web.vo.UserVO;
 import org.bson.types.ObjectId;
 import org.junit.Before;
@@ -16,13 +18,17 @@ import org.mockito.MockitoAnnotations;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.util.NestedServletException;
 
 import java.util.HashSet;
 
@@ -60,6 +66,8 @@ public class AuthControllerTest {
 
     @Test
     public void testAuthenticateUserShouldReturnAuthToken() throws Exception {
+        ObjectId id = ObjectId.get();
+
         User expected = new User();
         expected.setName("John");
         expected.setPassword("a");
@@ -67,7 +75,7 @@ public class AuthControllerTest {
         expected.setRoles(new HashSet<UserRole>() {{
             this.add(UserRole.ROLE_USER);
         }});
-        expected.setId(ObjectId.get());
+        expected.setId(id);
 
         UserVO userVO = new UserVO();
         userVO.setName("John");
@@ -75,8 +83,7 @@ public class AuthControllerTest {
         userVO.setRoles(new HashSet<UserRole>() {{
             this.add(UserRole.ROLE_USER);
         }});
-        userVO.setUserId(ObjectId.get().toString());
-
+        userVO.setUserId(id.toString());
 
         Authentication authentication = mock(Authentication.class);
         mockStatic(SecurityContextHolder.class);
@@ -90,9 +97,18 @@ public class AuthControllerTest {
         when(conversionService.convert(expected, UserVO.class)).thenReturn(userVO);
         when(SecurityContextHolder.getContext()).thenReturn(context);
 
-        mockMvc.perform(post("/auth/authenticate?username=John@myrotiuk.com&&password=a"))
-                .andExpect(status().isOk());
+        MvcResult mvcResult =mockMvc.perform(post("/auth/authenticate?username=John@myrotiuk.com&&password=a"))
+                .andExpect(status().isOk()).andReturn();
 
+        String mvcResultToken = mvcResult.getResponse().getContentAsString();
+        ObjectMapper mapper = new ObjectMapper();
+        AuthToken token = mapper.readValue(mvcResultToken, AuthToken.class);
+
+        assertEquals(expected.getName(),token.getUser().getName());
+        assertEquals(expected.getUsername(),token.getUser().getUsername());
+        assertEquals(expected.getId().toString(),token.getUser().getUserId());
+        assertEquals(expected.getRoles(),token.getUser().getRoles());
+        assertTrue(token.getValidDate()>0);
         assertEquals("John@myrotiuk.com", authenticationTokenArgumentCaptor.getValue().getPrincipal());
         assertEquals("a", authenticationTokenArgumentCaptor.getValue().getCredentials());
         verify(context, times(1)).setAuthentication(authentication);
